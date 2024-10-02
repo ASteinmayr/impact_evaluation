@@ -1,0 +1,284 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\begin{frame}
+
+404050 VU Empirical Economics: Impact Evaluation
+\end{frame}
+
+\begin{frame}{Organizational Information}
+\phantomsection\label{organizational-information}
+\begin{block}{Who we are}
+\phantomsection\label{who-we-are}
+\begin{block}{Lecturer:}
+\phantomsection\label{lecturer}
+Univ.-Prof.~Andreas Steinmayr, Ph.D.\\
+\href{mailto:andreas.steinmayr@uibk.ac.at}{\nolinkurl{andreas.steinmayr@uibk.ac.at}}\\
+\href{http://www.andreassteinmayr.net}{www.andreassteinmayr.net}
+\end{block}
+
+\begin{block}{Teaching Assistant:}
+\phantomsection\label{teaching-assistant}
+Elias Balayan
+\href{mailto:el.balayan@uibk.ac.at}{\nolinkurl{el.balayan@uibk.ac.at}}
+\end{block}
+\end{block}
+\end{frame}
+
+\begin{frame}{Organizational Information}
+\phantomsection\label{organizational-information-1}
+\begin{block}{How to contact us}
+\phantomsection\label{how-to-contact-us}
+\begin{itemize}
+\tightlist
+\item
+  Please email me or Elias Balayan to schedule an appointment.
+\item
+  In between the sessions, you can also use the OLAT forum to ask
+  questions. The questions will be public so that others can benefit
+  from the answers as well.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Organizational Information}
+\phantomsection\label{organizational-information-2}
+\begin{block}{Timetable}
+\phantomsection\label{timetable}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Lectures:}\\
+  Wed. 02.10. - 04.12.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Exam:}\\
+    Wed. 11.12.
+  \end{itemize}
+\item
+  \textbf{Work on empirical projects:}\\
+  December - January
+\item
+  \textbf{Seminar day:}\\
+  Wed. 31.01.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Class material}
+\phantomsection\label{class-material}
+All material will be uploaded to or linked on the OLAT page of the
+course
+
+\begin{itemize}
+\tightlist
+\item
+  Lecture slides
+\item
+  Textbooks
+\item
+  Research articles
+\item
+  Data for empirical projects
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Textbooks}
+\phantomsection\label{textbooks}
+\begin{block}{Central textbooks:}
+\phantomsection\label{central-textbooks}
+\begin{itemize}
+\tightlist
+\item
+  Gertler, P. J. et al.~(2016). \emph{Impact Evaluation in Practice}.
+  2nd Edition, World Bank Publications.\\
+  \href{http://www.worldbank.org/ieinpractice}{www.worldbank.org/ieinpractice}
+\item
+  Huntington-Klein, N. (2021). \emph{The Effect: An Introduction to
+  Research Design and Causality}. CRC Press.
+  \url{https://theeffectbook.net/}
+\end{itemize}
+\end{block}
+
+\begin{block}{Supplementary econometrics textbooks:}
+\phantomsection\label{supplementary-econometrics-textbooks}
+\begin{itemize}
+\tightlist
+\item
+  Cunningham, S. (2021). \emph{Causal Inference: The Mixtape}. New
+  Haven: Yale University Press.\\
+  \url{https://mixtape.scunning.com/}
+\item
+  Angrist J. and J-S Pischke (2014). \emph{Mastering Metrics}, Princeton
+  University Press.
+\item
+  Angrist J. and J-S Pischke (2009). \emph{Mostly Harmless
+  Econometrics}, Princeton University Press.
+\end{itemize}
+
+In addition, we will discuss some research articles that I will make
+available to you.
+\end{block}
+\end{frame}
+
+\begin{frame}{Examination}
+\phantomsection\label{examination}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Own empirical project} (in groups of 2 to 3 students) (40\%)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Presentation during seminar day
+  \item
+    Report
+  \item
+    More details on the empirical project in the coming weeks
+  \end{itemize}
+\item
+  \textbf{Short-exams} (15\%)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Three unannounced short exams at the beginning of the respective
+    session
+  \item
+    On the topic of the required reading for the session
+  \end{itemize}
+\item
+  \textbf{Final exam} (35\%)
+\item
+  \textbf{Participation in class} (10\%)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What is expected of you}
+\phantomsection\label{what-is-expected-of-you}
+\begin{itemize}
+\tightlist
+\item
+  Active participation throughout the course
+\item
+  Read the respective sections of the textbook \& assigned research
+  papers before class
+\item
+  Theoretical and practical knowledge of econometric methods
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This is not an introductory econometrics class
+  \end{itemize}
+\item
+  Basic knowledge in working with R
+
+  \begin{itemize}
+  \tightlist
+  \item
+    For a refresher and more advanced materials, look at Prof.~Zeileis'
+    \href{https://www.zeileis.org/teaching/R-Intro/}{R-Introduction} and
+    \href{https://www.zeileis.org/teaching/R-Programming/}{R-Programming}
+    guides.
+  \end{itemize}
+\item
+  Apply the knowledge you gain in this course
+\end{itemize}
+\end{frame}
+
+\end{document}

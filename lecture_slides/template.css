@@ -1,0 +1,104 @@
+/* Hide the header by default */
+.first-slide-header {
+  display: none;
+}
+
+/* Show the header only on the first slide */
+.slidy .slide:first-of-type .first-slide-header {
+  display: flex; /* Changed to flex for better alignment */
+  justify-content: space-between; /* Ensure logo is on the left and image to the right */
+  align-items: center;
+}
+
+/* General styling for the header container */
+.header-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vh; /* Adjust margin relative to viewport height */
+  padding: 2vh; /* Add padding relative to viewport height for better spacing */
+}
+
+/* Styling for the header image */
+.header-image {
+  width: 80vw; /* Responsive width based on viewport width */
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin-top: 5vh; /* Increased space between the title and header image relative to viewport */
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+/* Styling for the logo image */
+.logo {
+  width: 15vw; /* Set responsive width for the logo */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 2vw; /* Space between logo and header image */
+  background: white;
+  padding: 1vh;
+  object-fit: contain;
+}
+
+/* Customize h1 title size and styling */
+h1 {
+  font-size: 4vw; /* Responsive font size based on viewport width */
+  text-align: center;
+  margin: 5vh 0 2vh 0; /* Increased top margin for better spacing relative to viewport */
+  color: darkblue; /* Dark blue color for title */
+  font-weight: bold; /* Make title bold */
+  font-family: 'Arial', sans-serif; /* Set font */
+}
+
+/* Footer container styling */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Align footer elements */
+  align-items: center;
+  height: 10vh; /* Set footer height relative to viewport */
+  padding: 1vh 2vw; /* Adjust the padding for better spacing relative to viewport */
+  background-color: var(--uibk-blue); /* Customize background color */
+  color: black;
+  font-size: 1.5vw; /* Responsive font size for footer text */
+  z-index: 999; /* Ensure the footer stays on top */
+  border-top: 0.2px solid black; /* Add a black line above the footer */
+}
+
+/* Footer logo and course number on the left */
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo-image {
+  width: 10vw; /* Adjust logo size based on viewport */
+  height: auto;
+  margin-right: 1vw; /* Space between logo and course number */
+  object-fit: contain; /* Maintain aspect ratio */
+}
+
+.course-number {
+  font-size: 1.5vw; /* Responsive font size for course number */
+  color: black;
+  margin-right: 2vw; /* Adjust space between course number and center text */
+}
+
+/* Footer professor name in the center */
+.footer-center {
+  flex: 1;
+  text-align: center;
+  font-size: 2vw; /* Responsive font size for professor name */
+}
+
+/* Footer page number on the right */
+.footer-page-number {
+  flex: 0 0 auto;
+  text-align: right;
+  font-size: 2vw; /* Responsive font size for page number */
+}
+
