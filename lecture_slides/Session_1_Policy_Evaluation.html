@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Session_1_Policy_Evaluation.knit</title>
+  <style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+              </style>
+  <script src="Session_1_Policy_Evaluation_files/header-attrs-2.28/header-attrs.js"></script>
+  <link href="Session_1_Policy_Evaluation_files/slidy-2/styles/slidy.css" rel="stylesheet" />
+  <script src="Session_1_Policy_Evaluation_files/slidy-2/scripts/slidy.js"></script>
+  <script src="Session_1_Policy_Evaluation_files/slidy_shiny-1/slidy_shiny.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="template.css" />
+</head>
+<body>
+<div class="slide section level1">
+
+<p><img src="logo.jpg" alt="University Logo" class="logo"/>
+<img src="uibk_header1.png" alt="University Header" class="header-image"/></p>
+<h1>
+404050 VU Empirical Economics: Impact Evaluation
+<h1>
+<h3>
+Session 1 - Policy Evaluation
+<h3>
+</div>
+<div id="mean-annual-earnings-of-full-time-workers-in-austria"
+class="slide section level1">
+<h1>Mean annual earnings of full-time workers in Austria</h1>
+<p><img src="figures/earnings_austria_2017.png"
+alt="Earnings Austria 2017" /><br />
+<em>Source: Statistik Austria, Statista 2022</em></p>
+</div>
+<div id="purpose-of-this-course" class="slide section level1">
+<h1>Purpose of this course</h1>
+<ul>
+<li><strong>Understand program evaluation as a
+<em>consumer</em></strong>
+<ul>
+<li>Synthesize and understand evaluation results<br />
+</li>
+<li>Evaluate the quality of policy evaluations or choose between
+evaluation proposals<br />
+</li>
+<li>Make evidence-based decisions<br />
+</li>
+</ul></li>
+<li><strong>Provide skills to design and implement program
+evaluations</strong>
+<ul>
+<li>Many economists work on evaluations, not only in academia</li>
+</ul></li>
+</ul>
+</div>
+<div id="why-do-we-evaluate-programs" class="slide section level1">
+<h1>Why do we evaluate programs?</h1>
+<ul>
+<li><strong>Policy</strong> and <strong>program</strong> will be used as
+synonyms<br />
+</li>
+<li>Lots of money is spent every year to try to change things:
+<ul>
+<li>Government-provided job training programs<br />
+</li>
+<li>Sugar-tax to reduce obesity<br />
+</li>
+<li>Subsidies to increase R&amp;D investment in firms<br />
+</li>
+<li>Incentive schemes to increase worker productivity<br />
+</li>
+</ul></li>
+<li>We want to know:
+<ul>
+<li>What difference have these programs made?<br />
+</li>
+<li>What outcomes have been affected? By how much and for whom?</li>
+</ul></li>
+</ul>
+</div>
+<div id="broader-agenda-evidence-based-policy-making"
+class="slide section level1">
+<h1>Broader agenda: Evidence-based policy making</h1>
+<ul>
+<li>Policy decisions informed by rigorously established evidence
+<ul>
+<li>In reality often: <em>Policy-based evidence making</em><br />
+</li>
+</ul></li>
+<li>Based on the idea of evidence-based medicine<br />
+</li>
+<li>Goal: Inform allocation of resources, guide policy decisions,
+enhance accountability<br />
+</li>
+<li>Build general knowledge about the effectiveness of policies</li>
+</ul>
+</div>
+<div id="which-policies-should-we-evaluate"
+class="slide section level1">
+<h1>Which policies should we evaluate?</h1>
+<ul>
+<li>Evaluations are costly, especially data collection<br />
+</li>
+<li>What are the stakes of this policy?
+<ul>
+<li>Budget<br />
+</li>
+<li>Size of target population<br />
+</li>
+<li><em>Potential</em> effect sizes<br />
+</li>
+</ul></li>
+<li>Evaluate if the policy is:
+<ul>
+<li>Innovative: new and promising<br />
+</li>
+<li>Replicable: can be scaled up or applied in a different setting<br />
+</li>
+<li>Strategically relevant: flagship initiative, requires substantial
+resources, could have large (side) effects or generate substantial
+savings<br />
+</li>
+<li>Untested: Little is known about the effectiveness of this type of
+policy<br />
+</li>
+<li>Influential: Results will be used to inform key policy
+decisions</li>
+</ul></li>
+</ul>
+</div>
+<div id="common-errors" class="slide section level1">
+<h1>Common errors</h1>
+<ul>
+<li>People without knowledge in program evaluation tend to confuse:
+<ul>
+<li>Monitoring and evaluation<br />
+</li>
+<li>Correlation and impacts<br />
+</li>
+</ul></li>
+<li>Examples:
+<ul>
+<li>“The program was successful: 72% of participants find a job after
+job training”<br />
+</li>
+<li>“I feel better today because I took Globuli yesterday”<br />
+</li>
+<li>“She has a high income because she studied economics”<br />
+</li>
+<li>“Aztecs: Without human sacrifices of children, rain would not come,
+and crops would not flourish”<br />
+</li>
+</ul></li>
+<li>This can be extremely misleading</li>
+</ul>
+</div>
+<div id="simpsons-1951-paradox" class="slide section level1">
+<h1>Simpson’s (1951) paradox</h1>
+<ul>
+<li>Event C increases the probability of E in the population, whereas it
+decreases the probability of E in all sub-populations<br />
+</li>
+<li>Example: Taking a particular pill is helpful for the population but
+harmful for men and women</li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Combined</th>
+<th>Recovery (E)</th>
+<th>Not E</th>
+<th>Sum</th>
+<th>Recovery Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Drug (C)</td>
+<td>20</td>
+<td>20</td>
+<td>40</td>
+<td>50%</td>
+</tr>
+<tr class="even">
+<td>No drug (not C)</td>
+<td>16</td>
+<td>24</td>
+<td>40</td>
+<td>40%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="simpsons-1951-paradox-1" class="slide section level1">
+<h1>Simpson’s (1951) paradox</h1>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Men</th>
+<th>Recovery (E)</th>
+<th>Not E</th>
+<th>Sum</th>
+<th>Recovery Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Drug (C)</td>
+<td>18</td>
+<td>12</td>
+<td>30</td>
+<td>60%</td>
+</tr>
+<tr class="even">
+<td>No drug (not C)</td>
+<td>7</td>
+<td>3</td>
+<td>10</td>
+<td>70%</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Women</th>
+<th>Recovery (E)</th>
+<th>Not E</th>
+<th>Sum</th>
+<th>Recovery Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Drug (C)</td>
+<td>2</td>
+<td>8</td>
+<td>10</td>
+<td>20%</td>
+</tr>
+<tr class="even">
+<td>No drug (not C)</td>
+<td>9</td>
+<td>21</td>
+<td>30</td>
+<td>30%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="simpsons-1951-paradox-2" class="slide section level1">
+<h1>Simpson’s (1951) Paradox</h1>
+<ul>
+<li>Drug appears to be beneficial for the population because:
+<ul>
+<li>Men recover more often than women, both with and without taking the
+drug, and</li>
+<li>Men are more likely than women to take the drug.</li>
+</ul></li>
+<li>In other words, sex is a confounder and needs to be controlled for
+to obtain valid causal conclusions.</li>
+</ul>
+</div>
+<div id="what-is-impact-evaluation" class="slide section level1">
+<h1>What is impact evaluation?</h1>
+<ul>
+<li><strong>Monitoring</strong> tracks what is happening with a program,
+looks at the program implementation
+<ul>
+<li>Is the money indeed spent the way it was supposed to be?<br />
+</li>
+</ul></li>
+<li><strong>Impact evaluations</strong> seek to answer a
+cause-and-effect question
+<ul>
+<li>Which changes are directly attributable to a program?<br />
+</li>
+<li>What is the effect of obtaining a university degree on
+earnings?</li>
+</ul></li>
+</ul>
+</div>
+<div id="prospective-versus-retrospective-evaluation"
+class="slide section level1">
+<h1>Prospective versus retrospective evaluation</h1>
+<ul>
+<li><strong>Prospective evaluation</strong>
+<ul>
+<li>Set up at the same time as policy<br />
+</li>
+<li>Built into policy implementation/roll-out<br />
+</li>
+</ul></li>
+<li><strong>Retrospective evaluation</strong>
+<ul>
+<li>Policy evaluation after implementation<br />
+</li>
+</ul></li>
+<li>PE is more likely to produce credible evaluation results
+<ul>
+<li>(Baseline) data collection on treated and controls<br />
+</li>
+<li>Creates focus on policy objectives<br />
+</li>
+<li>Easier to construct credible counterfactual</li>
+</ul></li>
+</ul>
+</div>
+<div id="efficacy-studies-and-effectiveness-studies"
+class="slide section level1">
+<h1>Efficacy studies and effectiveness studies</h1>
+<ul>
+<li><strong>Efficacy studies</strong>
+<ul>
+<li>Carried out in a specific setting under closely controlled
+conditions<br />
+</li>
+<li>Small-scale pilot/proof of concept<br />
+</li>
+</ul></li>
+<li><strong>Effectiveness studies</strong>
+<ul>
+<li>Interventions that take place in normal circumstances, using regular
+implementation channels<br />
+</li>
+<li>Aim to produce findings that can be generalized to a large
+population</li>
+</ul></li>
+</ul>
+</div>
+<div id="internal-versus-external-validity"
+class="slide section level1">
+<h1>Internal versus external validity</h1>
+<ul>
+<li><strong>Internal validity</strong>
+<ul>
+<li>Evaluation identifies causal effect of program in a given
+setting<br />
+</li>
+<li>Varying degrees of credibility (RCT: Gold Standard)<br />
+</li>
+</ul></li>
+<li><strong>External validity</strong>
+<ul>
+<li>Generalizability of causal effect to other situations<br />
+</li>
+<li>Informative for a larger or different population, different
+time</li>
+</ul></li>
+</ul>
+</div>
+<div id="cost-benefit-and-cost-effectiveness-analysis"
+class="slide section level1">
+<h1>Cost-benefit and cost-effectiveness analysis</h1>
+<ul>
+<li><strong>Cost-benefit analysis</strong>
+<ul>
+<li>Estimates the total expected benefits of a program, compared to its
+total expected costs.<br />
+</li>
+<li>Seeks to quantify all of the costs and benefits of a program in
+monetary terms and assesses whether benefits outweigh costs.<br />
+</li>
+</ul></li>
+<li><strong>Cost-effectiveness analysis</strong>
+<ul>
+<li>Compares the relative cost of two or more programs or program
+alternatives in reaching a common outcome<br />
+Impact evaluation estimates the benefit side, and cost analysis provides
+the cost information! We focus on <strong>impact
+evaluation</strong>.</li>
+</ul></li>
+</ul>
+</div>
+<div id="preparing-for-an-evaluation" class="slide section level1">
+<h1>Preparing for an evaluation</h1>
+<ul>
+<li>Specify the evaluation question<br />
+</li>
+<li>Construct a theory of change<br />
+</li>
+<li>Develop a results chain<br />
+</li>
+<li>Select indicators to assess performance</li>
+</ul>
+</div>
+<div id="evaluation-question" class="slide section level1">
+<h1>Evaluation question</h1>
+<ul>
+<li>First step: Formulate a clear study question
+<ul>
+<li>What is the impact of the policy on an outcome of interest?<br />
+</li>
+<li>Which changes are directly attributable to a program?<br />
+</li>
+</ul></li>
+<li>Needs to be framed as a <strong>well-defined, testable
+hypothesis</strong></li>
+</ul>
+</div>
+<div id="are-these-good-evaluation-questions"
+class="slide section level1">
+<h1>Are these good evaluation questions?</h1>
+<ul>
+<li>What is the effect of studying economics on later earnings?<br />
+</li>
+<li>What is the effect of immigration on voting behavior of
+natives?</li>
+<li>What is the effect of reducing the speed limit on highways from 130
+to 100 km/h on the number of traffic deaths?</li>
+</ul>
+</div>
+<div id="theory-of-change" class="slide section level1">
+<h1>Theory of change</h1>
+<ul>
+<li>Describe the causal pathway (sequence of events from policy to final
+outcomes)<br />
+</li>
+<li>Formulate necessary assumptions and enabling conditions<br />
+</li>
+<li>Include all stakeholders<br />
+</li>
+<li>Consult existing literature</li>
+</ul>
+</div>
+<div id="results-chain" class="slide section level1">
+<h1>Results chain</h1>
+<div class="float">
+<img src="figures/results_chain.png" alt="Results chain" />
+<div class="figcaption">Results chain</div>
+</div>
+</div>
+<div id="results-chain---example" class="slide section level1">
+<h1>Results chain - example</h1>
+<ul>
+<li>Government agency provides training about settlement to immigrants
+<ul>
+<li><strong>Inputs</strong>: Staff from government agency, trainers,
+facilities, government budget, contact information of immigrants<br />
+</li>
+<li><strong>Activities</strong>: Design curriculum of training, select
+and prepare trainers, design, prepare, and distribute written
+material<br />
+</li>
+<li><strong>Outputs</strong>: Number of immigrants trained, number of
+written materials provided<br />
+</li>
+<li><strong>Outcomes</strong>: Immigrants behave differently based on
+information provided<br />
+</li>
+<li><strong>Final outcomes</strong>: Immigrants are (economically) more
+successful, higher well-being, less welfare spending for immigrants,
+reduced social tensions</li>
+</ul></li>
+</ul>
+</div>
+<div id="performance-indicators-outcomes" class="slide section level1">
+<h1>Performance indicators (Outcomes)</h1>
+<ul>
+<li>Ideally use indicators along the whole results chain
+<ul>
+<li>Not only final outcomes<br />
+</li>
+<li>Understand mechanisms<br />
+</li>
+<li>Especially important if evaluation finds no effect on final
+outcome<br />
+</li>
+</ul></li>
+<li>Selection of indicators should involve stakeholders<br />
+</li>
+<li>SMART indicators
+<ul>
+<li><strong>Specific</strong>: Translates required information into
+operational measure<br />
+</li>
+<li><strong>Measurable</strong>: Information can be measured and
+obtained<br />
+</li>
+<li><strong>Attributable</strong>: Indicator is linked to the policy’s
+efforts<br />
+</li>
+<li><strong>Realistic</strong>: Information can be obtained timely, with
+reasonable frequency, at reasonable cost<br />
+</li>
+<li><strong>Targeted</strong>: To the objective population</li>
+</ul></li>
+</ul>
+</div>
+<div class="footer">
+  <div class="footer-left">
+    <img src="logo.jpg" class="footer-logo-image">
+  </div>
+  <div class="footer-center">
+   Andreas Steinmayr
+  </div>
+  <div class="footer-right">
+    <span class="course-number">404050 Impact Evaluation </span>
+  </div>
+</div>
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+---
+output:
+  slidy_presentation:
+    self_contained: false
+    css: template.css
+    includes:
+      after_body: footer.html
+  beamer_presentation: default
+  ioslides_presentation: default
+---
+
+<img src="logo.jpg" alt="University Logo" class="logo"/> <img src="uibk_header1.png" alt="University Header" class="header-image"/>
+
+
+<h1>404050 VU Empirical Economics: Impact Evaluation <h1>
+<h3>Introduction and organisational information <h3>
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(purrr)
+library(patchwork)
+library(ggpubr)
+
+knitr::opts_chunk$set(fig.width = 5, fig.height = 3)
+
+theme_set(
+  theme_minimal(base_size = 10) +   # Adjust base font size
+  theme(
+    plot.title = element_text(size = 10, face = "bold"),  # Title font size and boldness
+    axis.text = element_text(size = 8),                  # Axis text size
+    axis.title = element_text(size = 10),                # Axis label size
+    legend.title = element_text(size = 8),               # Legend title font size
+    legend.text = element_text(size = 7)                 # Legend item font size
+  )
+)
+```
+
+<!-- Start of slide content -->
+
+# Organizational Information
+
+## Who we are
+
+### Lecturer:  
+Univ.-Prof. Andreas Steinmayr, Ph.D.  
+[andreas.steinmayr@uibk.ac.at](mailto:andreas.steinmayr@uibk.ac.at)  
+[www.andreassteinmayr.net](http://www.andreassteinmayr.net)
+
+### Teaching Assistant:
+Elias Balayan
+[el.balayan@uibk.ac.at](mailto:el.balayan@uibk.ac.at)
+
+---
+
+# Organizational Information
+
+## How to contact us
+
+- Please email me or Elias Balayan to schedule an appointment.
+- In between the sessions, you can also use the OLAT forum to ask questions. The questions will be public so that others can benefit from the answers as well.
+
+---
+
+# Organizational Information
+
+## Timetable
+
+- **Lectures:**  
+  Wed. 02.10. - 04.12.
+  - **Exam:**  
+    Wed. 11.12.
+- **Work on empirical projects:**  
+  December - January
+- **Seminar day:**  
+  Wed. 31.01.
+
+---
+
+# Class material
+
+All material will be uploaded to or linked on the OLAT page of the course
+
+  - Lecture slides
+  - Textbooks
+  - Research articles
+  - Data for empirical projects
+
+---
+
+# Textbooks
+
+## Central textbooks:
+
+- Gertler, P. J. et al. (2016). *Impact Evaluation in Practice*. 2nd Edition, World Bank Publications.  
+  [www.worldbank.org/ieinpractice](http://www.worldbank.org/ieinpractice)
+- Huntington-Klein, N. (2021). *The Effect: An Introduction to Research Design and Causality*. CRC Press.
+  [https://theeffectbook.net/](https://theeffectbook.net/)
+  
+## Supplementary econometrics textbooks:
+
+- Cunningham, S. (2021). *Causal Inference: The Mixtape*. New Haven: Yale University Press.  
+  [https://mixtape.scunning.com/](https://mixtape.scunning.com/)
+- Angrist J. and J-S Pischke (2014). *Mastering Metrics*, Princeton University Press.
+- Angrist J. and J-S Pischke (2009). *Mostly Harmless Econometrics*, Princeton University Press.
+
+In addition, we will discuss some research articles that I will make available to you.
+
+---
+
+# Examination
+
+- **Own empirical project** (in groups of 2 to 3 students) (40%)
+  - Presentation during seminar day
+  - Report
+  - More details on the empirical project in the coming weeks
+- **Short-exams** (15%)
+  - Three unannounced short exams at the beginning of the respective session
+  - On the topic of the required reading for the session
+- **Final exam** (35%)
+- **Participation in class** (10%)
+
+---
+
+# What is expected of you
+
+- Active participation throughout the course
+- Read the respective sections of the textbook & assigned research papers before class
+- Theoretical and practical knowledge of econometric methods
+  - This is not an introductory econometrics class
+- Basic knowledge in working with R
+  - For a refresher and more advanced materials, look at the [R-Introduction](https://discdown.org/rprogramming/) of Prof. Zeileis and colleagues.
+- Apply the knowledge you gain in this course

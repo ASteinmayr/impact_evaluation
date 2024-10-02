@@ -1,0 +1,275 @@
+---
+output:
+  slidy_presentation:
+    self_contained: false
+    css: template.css
+    includes:
+      after_body: footer.html
+  beamer_presentation: default
+  ioslides_presentation: default
+---
+
+<img src="logo.jpg" alt="University Logo" class="logo"/> <img src="uibk_header1.png" alt="University Header" class="header-image"/>
+
+<h1>404050 VU Empirical Economics: Impact Evaluation <h1>
+<h3> Session 1 - Policy Evaluation <h3>
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(purrr)
+library(patchwork)
+library(ggpubr)
+
+knitr::opts_chunk$set(fig.width = 5, fig.height = 3)
+
+theme_set(
+  theme_minimal(base_size = 10) +   # Adjust base font size
+  theme(
+    plot.title = element_text(size = 10, face = "bold"),  # Title font size and boldness
+    axis.text = element_text(size = 8),                  # Axis text size
+    axis.title = element_text(size = 10),                # Axis label size
+    legend.title = element_text(size = 8),               # Legend title font size
+    legend.text = element_text(size = 7)                 # Legend item font size
+  )
+)
+```
+
+---
+
+# Mean annual earnings of full-time workers in Austria
+
+![Earnings Austria 2017](figures/earnings_austria_2017.png)  
+*Source: Statistik Austria, Statista 2022*
+
+---
+
+# Purpose of this course
+
+- **Understand program evaluation as a _consumer_**  
+  - Synthesize and understand evaluation results  
+  - Evaluate the quality of policy evaluations or choose between evaluation proposals  
+  - Make evidence-based decisions  
+- **Provide skills to design and implement program evaluations**  
+  - Many economists work on evaluations, not only in academia
+
+---
+
+# Why do we evaluate programs?
+
+- **Policy** and **program** will be used as synonyms  
+- Lots of money is spent every year to try to change things:  
+  - Government-provided job training programs  
+  - Sugar-tax to reduce obesity  
+  - Subsidies to increase R&D investment in firms  
+  - Incentive schemes to increase worker productivity  
+- We want to know:  
+  - What difference have these programs made?  
+  - What outcomes have been affected? By how much and for whom?
+
+---
+
+# Broader agenda: Evidence-based policy making
+
+- Policy decisions informed by rigorously established evidence  
+  - In reality often: _Policy-based evidence making_  
+- Based on the idea of evidence-based medicine  
+- Goal: Inform allocation of resources, guide policy decisions, enhance accountability  
+- Build general knowledge about the effectiveness of policies  
+
+---
+
+# Which policies should we evaluate?
+
+- Evaluations are costly, especially data collection  
+- What are the stakes of this policy?  
+  - Budget  
+  - Size of target population  
+  - _Potential_ effect sizes  
+- Evaluate if the policy is:  
+  - Innovative: new and promising  
+  - Replicable: can be scaled up or applied in a different setting  
+  - Strategically relevant: flagship initiative, requires substantial resources, could have large (side) effects or generate substantial savings  
+  - Untested: Little is known about the effectiveness of this type of policy  
+  - Influential: Results will be used to inform key policy decisions  
+
+---
+
+# Common errors
+
+- People without knowledge in program evaluation tend to confuse:  
+  - Monitoring and evaluation  
+  - Correlation and impacts  
+- Examples:  
+  - "The program was successful: 72% of participants find a job after job training"  
+  - "I feel better today because I took Globuli yesterday"  
+  - "She has a high income because she studied economics"  
+  - "Aztecs: Without human sacrifices of children, rain would not come, and crops would not flourish"  
+- This can be extremely misleading  
+
+---
+
+# Simpson's (1951) paradox
+
+- Event C increases the probability of E in the population, whereas it decreases the probability of E in all sub-populations  
+- Example: Taking a particular pill is helpful for the population but harmful for men and women
+
+<br>
+
+| Combined         | Recovery (E) | Not E | Sum | Recovery Rate |
+| ---------------- | ------------ | ----- | --- | ------------- |
+| Drug (C)         | 20           | 20    | 40  | 50%           |
+| No drug (not C)  | 16           | 24    | 40  | 40%           |
+
+# Simpson's (1951) paradox
+
+<br>
+
+| Men              | Recovery (E) | Not E | Sum | Recovery Rate |
+| ---------------- | ------------ | ----- | --- | ------------- |
+| Drug (C)         | 18           | 12    | 30  | 60%           |
+| No drug (not C)  |  7           | 3     | 10  | 70%           |
+
+<br>
+
+| Women            | Recovery (E) | Not E | Sum | Recovery Rate |
+| ---------------- | ------------ | ----- | --- | ------------- |
+| Drug (C)         | 2            | 8     | 10  | 20%           |
+| No drug (not C)  |  9           | 21    | 30  | 30%           |
+
+---
+
+# Simpson's (1951) Paradox
+
+- Drug appears to be beneficial for the population because:
+  - Men recover more often than women, both with and without taking the drug, and
+  - Men are more likely than women to take the drug.
+  
+- In other words, sex is a confounder and needs to be controlled for to obtain valid causal conclusions.
+
+---
+
+# What is impact evaluation?
+
+- **Monitoring** tracks what is happening with a program, looks at the program implementation  
+  - Is the money indeed spent the way it was supposed to be?  
+- **Impact evaluations** seek to answer a cause-and-effect question  
+  - Which changes are directly attributable to a program?  
+  - What is the effect of obtaining a university degree on earnings?
+
+---
+
+# Prospective versus retrospective evaluation
+
+- **Prospective evaluation**  
+  - Set up at the same time as policy  
+  - Built into policy implementation/roll-out  
+- **Retrospective evaluation**  
+  - Policy evaluation after implementation  
+- PE is more likely to produce credible evaluation results  
+  - (Baseline) data collection on treated and controls  
+  - Creates focus on policy objectives  
+  - Easier to construct credible counterfactual  
+
+---
+
+# Efficacy studies and effectiveness studies
+
+- **Efficacy studies**  
+  - Carried out in a specific setting under closely controlled conditions  
+  - Small-scale pilot/proof of concept  
+- **Effectiveness studies**  
+  - Interventions that take place in normal circumstances, using regular implementation channels  
+  - Aim to produce findings that can be generalized to a large population  
+
+---
+
+# Internal versus external validity
+
+- **Internal validity**  
+  - Evaluation identifies causal effect of program in a given setting  
+  - Varying degrees of credibility (RCT: Gold Standard)  
+- **External validity**  
+  - Generalizability of causal effect to other situations  
+  - Informative for a larger or different population, different time  
+
+---
+
+# Cost-benefit and cost-effectiveness analysis
+
+- **Cost-benefit analysis**  
+  - Estimates the total expected benefits of a program, compared to its total expected costs.  
+  - Seeks to quantify all of the costs and benefits of a program in monetary terms and assesses whether benefits outweigh costs.  
+- **Cost-effectiveness analysis**  
+  - Compares the relative cost of two or more programs or program alternatives in reaching a common outcome  
+Impact evaluation estimates the benefit side, and cost analysis provides the cost information! We focus on **impact evaluation**.
+
+---
+
+# Preparing for an evaluation
+
+- Specify the evaluation question  
+- Construct a theory of change  
+- Develop a results chain  
+- Select indicators to assess performance
+
+---
+
+# Evaluation question
+
+- First step: Formulate a clear study question  
+  - What is the impact of the policy on an outcome of interest?  
+  - Which changes are directly attributable to a program?  
+- Needs to be framed as a **well-defined, testable hypothesis**
+
+---
+
+# Are these good evaluation questions?
+
+- What is the effect of studying economics on later earnings?  
+- What is the effect of immigration on voting behavior of natives? 
+- What is the effect of reducing the speed limit on highways from 130 to 100 km/h on the number of traffic deaths?
+
+---
+
+# Theory of change
+
+- Describe the causal pathway (sequence of events from policy to final outcomes)  
+- Formulate necessary assumptions and enabling conditions  
+- Include all stakeholders  
+- Consult existing literature  
+
+---
+
+# Results chain
+
+![Results chain](figures/results_chain.png)
+
+---
+
+# Results chain - example
+
+- Government agency provides training about settlement to immigrants  
+  - **Inputs**: Staff from government agency, trainers, facilities, government budget, contact information of immigrants  
+  - **Activities**: Design curriculum of training, select and prepare trainers, design, prepare, and distribute written material  
+  - **Outputs**: Number of immigrants trained, number of written materials provided  
+  - **Outcomes**: Immigrants behave differently based on information provided  
+  - **Final outcomes**: Immigrants are (economically) more successful, higher well-being, less welfare spending for immigrants, reduced social tensions  
+
+---
+
+# Performance indicators (Outcomes)
+
+- Ideally use indicators along the whole results chain  
+  - Not only final outcomes  
+  - Understand mechanisms  
+  - Especially important if evaluation finds no effect on final outcome  
+- Selection of indicators should involve stakeholders  
+- SMART indicators  
+  - **Specific**: Translates required information into operational measure  
+  - **Measurable**: Information can be measured and obtained  
+  - **Attributable**: Indicator is linked to the policy's efforts  
+  - **Realistic**: Information can be obtained timely, with reasonable frequency, at reasonable cost  
+  - **Targeted**: To the objective population
