@@ -5,8 +5,8 @@ output:
     css: template.css
     includes:
       after_body: footer.html
-  beamer_presentation: default
   ioslides_presentation: default
+  beamer_presentation: default
 ---
 
 <img src="logo.jpg" alt="University Logo" class="logo"/> <img src="uibk_header1.png" alt="University Header" class="header-image"/>
@@ -130,3 +130,13 @@ In addition, we will discuss some research articles that I will make available t
 - Basic knowledge in working with R
   - For a refresher and more advanced materials, look at Prof. Zeileis' [R-Introduction](https://www.zeileis.org/teaching/R-Intro/) and [R-Programming](https://www.zeileis.org/teaching/R-Programming/) guides.
 - Apply the knowledge you gain in this course
+
+# Required reading for next week (9 October)
+
+- Impact Evaluation in Practice
+  - Chapter 1: Why Evaluate?
+  - Chapter 2: Preparing for an Evaluation
+  
+- The Effect
+  - Chapter 1: Designing Research
+  - Chapter 2: Research Questions
