@@ -1,13 +1,26 @@
 ---
 output:
+  beamer_presentation:
+    includes:
+      in_header: header.tex  # to include LaTeX footer definition
   slidy_presentation:
     self_contained: false
     css: template.css
     includes:
       after_body: footer.html
-  beamer_presentation: default
-  ioslides_presentation: default
+  ioslides_presentation:
+    css: template.css
+    includes:
+      after_body: footer.html
 ---
+
+```{r include-logo, echo=FALSE, out.width='20%', fig.align='left'}
+knitr::include_graphics("logo.jpg")
+```
+
+```{r include-header, echo=FALSE, out.width='70%', fig.align='center'}
+knitr::include_graphics("uibk_header1.png")
+```
 
 <img src="logo.jpg" alt="University Logo" class="logo"/> <img src="uibk_header1.png" alt="University Header" class="header-image"/>
 
