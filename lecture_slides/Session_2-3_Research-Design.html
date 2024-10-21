@@ -1,0 +1,951 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Session_2_Research-Design.knit</title>
+  <style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+            pre > code.sourceCode { white-space: pre; position: relative; }
+            pre > code.sourceCode > span { line-height: 1.25; }
+            pre > code.sourceCode > span:empty { height: 1.2em; }
+            .sourceCode { overflow: visible; }
+            code.sourceCode > span { color: inherit; text-decoration: inherit; }
+            div.sourceCode { margin: 1em 0; }
+            pre.sourceCode { margin: 0; }
+            @media screen {
+            div.sourceCode { overflow: auto; }
+            }
+            @media print {
+            pre > code.sourceCode { white-space: pre-wrap; }
+            pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+            }
+            pre.numberSource code
+              { counter-reset: source-line 0; }
+            pre.numberSource code > span
+              { position: relative; left: -4em; counter-increment: source-line; }
+            pre.numberSource code > span > a:first-child::before
+              { content: counter(source-line);
+                position: relative; left: -1em; text-align: right; vertical-align: baseline;
+                border: none; display: inline-block;
+                -webkit-touch-callout: none; -webkit-user-select: none;
+                -khtml-user-select: none; -moz-user-select: none;
+                -ms-user-select: none; user-select: none;
+                padding: 0 4px; width: 4em;
+                color: #aaaaaa;
+              }
+            pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+            div.sourceCode
+              {   }
+            @media screen {
+            pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+            }
+            code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+            code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+            code span.at { color: #7d9029; } /* Attribute */
+            code span.bn { color: #40a070; } /* BaseN */
+            code span.bu { color: #008000; } /* BuiltIn */
+            code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+            code span.ch { color: #4070a0; } /* Char */
+            code span.cn { color: #880000; } /* Constant */
+            code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+            code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+            code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+            code span.dt { color: #902000; } /* DataType */
+            code span.dv { color: #40a070; } /* DecVal */
+            code span.er { color: #ff0000; font-weight: bold; } /* Error */
+            code span.ex { } /* Extension */
+            code span.fl { color: #40a070; } /* Float */
+            code span.fu { color: #06287e; } /* Function */
+            code span.im { color: #008000; font-weight: bold; } /* Import */
+            code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+            code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+            code span.op { color: #666666; } /* Operator */
+            code span.ot { color: #007020; } /* Other */
+            code span.pp { color: #bc7a00; } /* Preprocessor */
+            code span.sc { color: #4070a0; } /* SpecialChar */
+            code span.ss { color: #bb6688; } /* SpecialString */
+            code span.st { color: #4070a0; } /* String */
+            code span.va { color: #19177c; } /* Variable */
+            code span.vs { color: #4070a0; } /* VerbatimString */
+            code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+          </style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <script src="Session_2_Research-Design_files/header-attrs-2.28/header-attrs.js"></script>
+  <link href="Session_2_Research-Design_files/slidy-2/styles/slidy.css" rel="stylesheet" />
+  <script src="Session_2_Research-Design_files/slidy-2/scripts/slidy.js"></script>
+  <script src="Session_2_Research-Design_files/slidy_shiny-1/slidy_shiny.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="template.css" />
+</head>
+<body>
+<div class="slide section level1">
+
+<p><img src="logo.jpg" width="20%" style="display: block; margin: auto auto auto 0;" /></p>
+<p><img src="uibk_header1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="logo.jpg" alt="University Logo" class="logo"/>
+<img src="uibk_header1.png" alt="University Header" class="header-image"/></p>
+<h1>
+404050 VU Empirical Economics: Impact Evaluation
+<h1>
+<h3>
+Session 2 - Causality and Research Designs
+<h3>
+</div>
+<div id="causality" class="slide section level1">
+<h1>Causality</h1>
+<ul>
+<li>We want to know “Does X cause Y?” and “How much does X cause
+Y?”</li>
+<li>We often want to do this while only having access to observational
+data</li>
+<li>This is what the class is about</li>
+</ul>
+</div>
+<div id="why-causality" class="slide section level1">
+<h1>Why Causality?</h1>
+<ul>
+<li>Many of the interesting questions we might want to answer with data
+are causal</li>
+<li>Some are non-causal, too - for example, “how can we predict whether
+this photo is of a dog or a cat” is vital to how Google Images works,
+but it doesn’t care what <em>caused</em> the photo to be of a dog or a
+cat</li>
+<li>Nearly every <em>why</em> question is causal</li>
+<li><em>Because</em> statements are causal</li>
+<li>And when we’re talking about people, <em>why</em> is often what we
+want to know!</li>
+</ul>
+</div>
+<div id="also" class="slide section level1">
+<h1>Also</h1>
+<ul>
+<li>This is economists’ comparative advantage!</li>
+<li>Plenty of fields do statistics. But very few make it standard
+training for their students to understand causality</li>
+<li>This understanding of causality makes economists very useful!
+<em>This</em> is one big reason why tech companies have whole economics
+departments in them</li>
+</ul>
+<h2 id="bringing-us-to">Bringing us to…</h2>
+<ul>
+<li>Part of this half of the class will be understanding what causality
+<em>is</em> and how we can find it</li>
+<li>Another big part will be understanding common <em>research
+designs</em> for uncovering causality in data when we can’t do an
+experiment</li>
+<li>These, more than supply &amp; demand, more than ISLM, are the tools
+of the modern economist!</li>
+</ul>
+</div>
+<div id="so-what-is-causality" class="slide section level1">
+<h1>So what is causality?</h1>
+<ul>
+<li>We say that <code>X</code> <em>causes</em> <code>Y</code> if…</li>
+<li>were we to intervene and <em>change</em> the value of <code>X</code>
+without changing anything else…</li>
+<li>then <code>Y</code> would also change as a result</li>
+</ul>
+</div>
+<div id="some-examples" class="slide section level1">
+<h1>Some examples</h1>
+<p>Examples of causal relationships!</p>
+<p>Some obvious:</p>
+<ul>
+<li>A light switch being set to on causes the light to be on</li>
+<li>Setting off fireworks raises the noise level</li>
+</ul>
+<p>Some less obvious:</p>
+<ul>
+<li>Getting a college degree increases your earnings</li>
+<li>Tariffs reduce the amount of trade</li>
+</ul>
+</div>
+<div id="some-examples-1" class="slide section level1">
+<h1>Some examples</h1>
+<p>Examples of non-zero <em>correlations</em> that are not
+<em>causal</em> (or may be causal in the wrong direction!)</p>
+<p>Some obvious:</p>
+<ul>
+<li>More people drown on days when ice cream sales are high</li>
+<li>Rooster crowing sounds are followed closely by sunrise</li>
+</ul>
+<p>Some less obvious:</p>
+<ul>
+<li>Colds tend to clear up a few days after you take Globuli</li>
+<li>The performance of the economy tends to be lower or higher depending
+on the political parties forming the government</li>
+</ul>
+</div>
+<div id="important-note" class="slide section level1">
+<h1>Important Note</h1>
+<ul>
+<li>“X causes Y” <em>doesn’t</em> mean that X is necessarily the
+<em>only</em> thing that causes Y</li>
+<li>For example, using a light switch causes the light to go on</li>
+<li>But not if the bulb is burned out (no Y, despite X), or if the light
+was already on (Y without X), and it ALSO needs electicity (something
+else causes Y)</li>
+<li>But still we’d say that using the switch causes the light! The
+important thing is that X <em>changes the distribution</em> of Y, not
+that it necessarily makes it happen for certain</li>
+<li>Taking an econometrics class <em>may</em> help you land a better
+job. But it does not necessarily.</li>
+</ul>
+</div>
+<div id="so-how-can-we-tell" class="slide section level1">
+<h1>So How Can We Tell?</h1>
+<ul>
+<li>As just shown, there are plenty of <em>correlations</em> that aren’t
+<em>causal</em></li>
+<li>So if we have a correlation, how can we tell if it <em>is</em>?</li>
+<li>For this we’re going to have to think hard about <em>causal
+inference</em>. That is, inferring causality from data</li>
+</ul>
+</div>
+<div id="the-problem-of-causal-inference" class="slide section level1">
+<h1>The Problem of Causal Inference</h1>
+<ul>
+<li>Let’s try to think about whether some <code>X</code> causes
+<code>Y</code></li>
+<li>That is, if we manipulated <code>X</code>, then <code>Y</code> would
+change as a result</li>
+<li>For simplicity, let’s assume that <code>X</code> is either 1 or 0,
+like “got a medical treatment” or “didn’t” – Think of treatment and
+control group</li>
+</ul>
+</div>
+<div id="the-problem-of-causal-inference-1"
+class="slide section level1">
+<h1>The Problem of Causal Inference</h1>
+<ul>
+<li>Now, how can we know <em>what would happen</em> if we manipulated
+<code>X</code>?</li>
+<li>Let’s consider just one person - Emilia. We could just check what
+Emilia’s <code>Y</code> is when we make <code>X=0</code>, and then check
+what Emilia’s <code>Y</code> is again when we make
+<code>X=1</code>.</li>
+<li>Are those two <code>Y</code>s different? If so, <code>X</code>
+causes <code>Y</code>!</li>
+<li>Do that same process for everyone in your sample and you know in
+general what the effect of <code>X</code> on <code>Y</code> is</li>
+</ul>
+</div>
+<div id="the-problem-of-causal-inference-2"
+class="slide section level1">
+<h1>The Problem of Causal Inference</h1>
+<ul>
+<li>You may have spotted the problem</li>
+<li>Just like you can’t be in two places at once, Emilia can’t exist
+both with <code>X=0</code> and with <code>X=1</code>. She either got
+that medical treatment or she didn’t.</li>
+<li>Let’s say she did. So for Emilia, <code>X=1</code> and, let’s say,
+<code>Y=10</code>.</li>
+<li>The other one, what <code>Y</code> <em>would have been</em> if we
+made <code>X=0</code>, is <em>missing</em>. We don’t know what it is!
+Could also be <code>Y=10</code>. Could be <code>Y=9</code>. Could be
+<code>Y=1000</code>!</li>
+</ul>
+</div>
+<div id="the-problem-of-causal-inference-3"
+class="slide section level1">
+<h1>The Problem of Causal Inference</h1>
+<ul>
+<li>Well, why don’t we just take someone who actually DOES have
+<code>X=0</code> and compare their <code>Y</code>?</li>
+<li>Because there are lots of reasons their <code>Y</code> could be
+different BESIDES <code>X</code>.</li>
+<li>They’re not Emilia! A character flaw to be sure.</li>
+<li>So if we find someone, Claudia, with <code>X=0</code> and they have
+<code>Y=9</code>, is that because <code>X</code> increases
+<code>Y</code>, or is that just because Emilia and Claudia would have
+had different <code>Y</code>s anyway?</li>
+</ul>
+</div>
+<div id="the-problem-of-causal-inference-4"
+class="slide section level1">
+<h1>The Problem of Causal Inference</h1>
+<ul>
+<li>The main goal we have in doing causal inference is in making <em>as
+good a guess as possible</em> as to what that <code>Y</code> <em>would
+have been</em> if <code>X</code> had been different</li>
+<li>That “would have been” is called a <em>counterfactual</em> - counter
+to the fact of what actually happened</li>
+<li>In doing so, we want to think about two people/firms/countries that
+are basically <em>exactly the same</em> except that one has
+<code>X=0</code> and one has <code>X=1</code></li>
+<li>Alternatively, think about what would have happened to this
+person/firm/country in a parallel universe where <code>X=0</code>
+instead of <code>X=1</code></li>
+</ul>
+</div>
+<div id="potential-outcomes" class="slide section level1">
+<h1>Potential Outcomes</h1>
+<ul>
+<li>The logic we just went through is the basis of the <em>potential
+outcomes model</em>, which is one way of thinking about causality</li>
+<li>It’s not the only one, or the one we’ll be mainly using, but it
+helps!</li>
+<li>We can’t observe the counterfactual, and must make an estimate of
+what the <em>outcome</em> would <em>potentially</em> have been under the
+counterfactual</li>
+<li>For making causal statements obout the world, we have to solve a
+<em>missing data problem</em></li>
+<li>Figuring out what makes a good counterfactual estimate is a key part
+of causal inference!</li>
+</ul>
+</div>
+<div id="data-and-assumptions" class="slide section level1">
+<h1>Data and assumptions</h1>
+<ul>
+<li>For making causal statements, we combine <em>data</em> and
+<em>assumptions</em></li>
+<li>As we’ve just heard, some things cannot be learned from data
+alone</li>
+<li>We have to add assumptions about the missing parts</li>
+<li>The class is a lot about coming up with credible assumptions</li>
+<li>If we have better data, we might need fewer assumptions. But some
+assumptions will always remain necessary</li>
+</ul>
+</div>
+<div id="experiments" class="slide section level1">
+<h1>Experiments</h1>
+<ul>
+<li>A common way to do causal inference in many fields is an
+<em>experiment</em></li>
+<li>If you can <em>randomly assign</em> <code>X</code>, then you know
+that the people with <code>X=0</code> are, on average, the same as the
+people with <code>X=1</code></li>
+<li>So that’s an easy comparison!</li>
+<li>Statistics help us come up with credible assumptions (e.g. <em>Law
+of large numbers</em>)</li>
+</ul>
+</div>
+<div id="experiments-1" class="slide section level1">
+<h1>Experiments</h1>
+<ul>
+<li>When we’re working with people/firms/countries, running experiments
+is often infeasible, impossible, or unethical</li>
+<li>So we have to think hard about a <em>model</em> of what the world
+looks like</li>
+<li>So that we can use our model to figure out what the
+<em>counterfactual</em> would be</li>
+</ul>
+</div>
+<div id="models" class="slide section level1">
+<h1>Models</h1>
+<ul>
+<li>In causal inference, the <em>model</em> is our idea of what we think
+the process is that <em>generated the data</em></li>
+<li>We have to make some assumptions about what this is!</li>
+<li>We put together what we know about the world with assumptions and
+end up with our model</li>
+<li>The model can then tell us what kinds of things could give us wrong
+results so we can fix them and get the right counterfactual</li>
+</ul>
+</div>
+<div id="models-1" class="slide section level1">
+<h1>Models</h1>
+<ul>
+<li>Wouldn’t it be nice to not have to make assumptions?</li>
+<li>Yeah, but it’s impossible to skip!</li>
+<li>We’re trying to predict something that hasn’t happened - a
+counterfactual</li>
+<li>This is literally impossible to do if you don’t have some model of
+how the data is generated</li>
+<li>You can’t even predict the sun will rise tomorrow without a
+model!</li>
+<li>If you think you can, you’re just don’t realize the model you’re
+using - that’s dangerous!</li>
+</ul>
+</div>
+<div id="an-example" class="slide section level1">
+<h1>An Example</h1>
+<ul>
+<li>Let’s cheat a bit and know how our data is generated!</li>
+<li>Let’s say that getting <code>X</code> causes <code>Y</code> to
+increase by 1</li>
+<li>And let’s run a randomized experiment of who actually gets X</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Y.without.X =</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>),<span class="at">X=</span><span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dv">10000</span>,<span class="at">replace=</span>T)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">Y.with.X =</span> Y.without.X <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="co">#Now assign who actually gets X</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">Observed.Y =</span> <span class="fu">ifelse</span>(X<span class="sc">==</span><span class="dv">1</span>,Y.with.X,Y.without.X))</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#And see what effect our experiment suggests X has on Y</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(X) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Y =</span> <span class="fu">mean</span>(Observed.Y))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##       X       Y
+##   &lt;dbl&gt;   &lt;dbl&gt;
+## 1     0 0.00679
+## 2     1 0.991</code></pre>
+</div>
+<div id="an-example-1" class="slide section level1">
+<h1>An Example</h1>
+<ul>
+<li>Now this time we can’t randomize X.</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Z =</span> <span class="fu">runif</span>(<span class="dv">10000</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Y.without.X =</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>) <span class="sc">+</span> Z, <span class="at">Y.with.X =</span> Y.without.X <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="co">#Now assign who actually gets X</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">X =</span> Z <span class="sc">&gt;</span> .<span class="dv">7</span>,<span class="at">Observed.Y =</span> <span class="fu">ifelse</span>(X<span class="sc">==</span><span class="dv">1</span>,Y.with.X,Y.without.X))</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(X) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Y =</span> <span class="fu">mean</span>(Observed.Y))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   X         Y
+##   &lt;lgl&gt; &lt;dbl&gt;
+## 1 FALSE 0.342
+## 2 TRUE  1.85</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co">#But if we properly model the process and compare apples to apples...</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(Z<span class="fl">-.7</span>)<span class="sc">&lt;</span>.<span class="dv">01</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(X) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Y =</span> <span class="fu">mean</span>(Observed.Y))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   X         Y
+##   &lt;lgl&gt; &lt;dbl&gt;
+## 1 FALSE 0.687
+## 2 TRUE  1.96</code></pre>
+</div>
+<div id="identification" class="slide section level1">
+<h1>Identification</h1>
+<ul>
+<li>We have “identified” a causal effect if <em>the estimate that we
+generate gives us a causal effect</em></li>
+<li>In other words, <strong>when we see the estimate, we can claim that
+it’s isolating just the causal effect</strong></li>
+<li>Simply looking at <code>lm(Y~X)</code> gives us the causal effect in
+the randomized-X case. <code>lm(Y~X)</code> <strong>identifies</strong>
+the effect of <span class="math inline">\(X\)</span> on <span
+class="math inline">\(Y\)</span></li>
+<li>But <code>lm(Y~X)</code> does <em>not</em> give us the causal effect
+in the non-randomized case we did. In that case, <code>lm(Y~X)</code>
+does not <strong>identify</strong> the causal effect, but the
+apples-to-apples comparison we did <em>does</em> identify the
+effect</li>
+<li>Running a regression is easy - running a <em>meaningful</em>
+regression and interpreting it correctly is much harder</li>
+<li>Causal inference is all about figuring out <strong>what calculation
+we need to do to identify that effect</strong></li>
+</ul>
+</div>
+<div id="identification-1" class="slide section level1">
+<h1>Identification</h1>
+<ul>
+<li>Identifying effects requires us to understand the <strong>data
+generating process</strong> (DGP)</li>
+<li>And once we understand that DGP, knowing what calculations we need
+to do to isolate our effect</li>
+<li>Often these will require taking some conditional values
+(controls)</li>
+<li>Or <strong>isolating the variation we want</strong> in some other
+way</li>
+</ul>
+</div>
+<div id="so" class="slide section level1">
+<h1>So!</h1>
+<ul>
+<li>So, as we move forward…</li>
+<li>We’re going to be thinking about how to create models of the
+processes that generated the data</li>
+<li>And, once we have those models, we’ll figure out what methods we can
+use to generate plausible counterfactuals</li>
+<li>Once we’re really comparing apples to apples, we can figure out,
+using <em>only data we can actually observe</em>, how things would be
+different if we reached in and changed <code>X</code>, and how
+<code>Y</code> would change as a result.</li>
+</ul>
+</div>
+<div id="example" class="slide section level1">
+<h1>Example</h1>
+<ul>
+<li>Let’s say we want to know whether going to the opera makes you live
+longer</li>
+<li>You collect data on recently deceased people (so you know there age)
+and ask their relatives how often they went to the opera?</li>
+<li>So we run the following regression: <span
+class="math inline">\(Lifespan = \beta_0 + \beta_1Opera +
+\varepsilon\)</span> where <span class="math inline">\(Opera\)</span> is
+the number of times per year you go to the opera</li>
+<li>What do we want to estimate?</li>
+<li>What will <span class="math inline">\(\beta_1\)</span>
+estimate?</li>
+</ul>
+</div>
+<div id="example-1" class="slide section level1">
+<h1>Example</h1>
+<ul>
+<li>The estimate of <span class="math inline">\(\beta_1\)</span> we get
+will tell us <em>how the conditional mean of</em> <span
+class="math inline">\(Lifespan\)</span> changes as <span
+class="math inline">\(Opera\)</span> changes, but what we want is
+<em>whether going to the opera more makes you live longer</em></li>
+<li>If we see a positive <span class="math inline">\(\beta_1 &gt;
+0\)</span>, that <em>could</em> be because opera makes you live longer,
+but we can’t rule out that it’s longer-living people choosing to go to
+the opera</li>
+<li>So, that regression does not <em>identify</em> the effect we
+want</li>
+</ul>
+</div>
+<div id="correlation-and-causation" class="slide section level1">
+<h1>Correlation and Causation</h1>
+<ul>
+<li>In the opera example, this is clearly just a case of “correlation is
+not causation” but the idea of identification is a little more helpful
+that that</li>
+<li>Because really, some correlations <em>are</em> causal. Every
+causation is <em>some</em> correlation (often a conditional one)</li>
+<li>The task is figuring out <em>which correlation</em> identifies our
+effect of interest</li>
+</ul>
+</div>
+<div id="the-good-variation" class="slide section level1">
+<h1>The Good Variation</h1>
+<ul>
+<li>Variables vary. Sort of the point.</li>
+<li>Two variables can be related</li>
+<li><strong>Why</strong> do they vary? <strong>Why</strong> are they
+related</li>
+<li>Usually you’re only interested in one of the reasons</li>
+<li>And that reason accounts for only <em>part of the variation</em>.
+Which part?</li>
+</ul>
+</div>
+<div id="the-good-variation-1" class="slide section level1">
+<h1>The Good Variation</h1>
+<p>Why might opera and lifespan be related?</p>
+<ul>
+<li>Wealthier people are more likely to go to the opera, and wealth can
+increase your lifespan for many reasons</li>
+<li>People with certain chronic life-shortening illnesses may find it
+difficult to go to the opera</li>
+<li>Older people are more likely to go to the opera, so you need a long
+lifespan in the first place to get to the opera-going part of your
+life</li>
+<li>Maybe opera really does make you live longer</li>
+</ul>
+</div>
+<div id="the-good-variation-2" class="slide section level1">
+<h1>The Good Variation</h1>
+<ul>
+<li>All those other explanations are <em>reasons why we might see
+longer-lived people going to the opera more</em></li>
+<li>Which is why, <em>when we observe longer-lived people going to the
+opera more</em>, we can’t just say it’s because opera makes you live
+longer</li>
+<li>But we can get our answer! We simply have to <em>remove the
+variation that’s due to those other explanations</em>, or <em>isolate
+just the variation we’re interested in</em> in some way</li>
+</ul>
+</div>
+<div id="the-good-variation-3" class="slide section level1">
+<h1>The Good Variation</h1>
+<ul>
+<li>One way of <em>removing variation due to other explanations</em> is
+controls</li>
+<li>Adding a control <em>removes the variation that can be explained by
+the control variable</em></li>
+<li>It does this from both <span class="math inline">\(X\)</span> and
+<span class="math inline">\(Y\)</span>, removing that part of the
+relationship, and <em>removing that reason why they’re related</em></li>
+<li>If we can do this for <em>all</em> alternative explanations, we can
+isolate the variation we want and identify the effect!</li>
+</ul>
+</div>
+<div id="experiments-2" class="slide section level1">
+<h1>Experiments</h1>
+<ul>
+<li>Or, we can limit the data to allow only the variation we want</li>
+<li>An experiment is one way of doing this.</li>
+<li>If you can randomly assign people to go to the opera, then the
+<em>only variation</em> in opera-going in your sample is unrelated to
+anything like wealth, previous health, or previous age</li>
+<li>So the <em>only part of the opera/lifespan relationship there can
+possibly be is if opera causes lifespan</em></li>
+<li>Regressing $lifespan” on <span class="math inline">\(opera\)</span>
+will give you the causal effect in this case</li>
+</ul>
+</div>
+<div id="causal-inference" class="slide section level1">
+<h1>Causal Inference</h1>
+<ul>
+<li>Identification means <em>isolating just the reason you want</em> as
+to why two variables are related</li>
+<li>Causal inference is all about finding <em>which kinds of variation
+we need to remove</em> to do this, and then doing it</li>
+<li>Or <em>isolating just the variation we need to keep</em>, often
+using experiments, or things that are experiment-like</li>
+</ul>
+</div>
+<div id="example-2" class="slide section level1">
+<h1>Example</h1>
+<ul>
+<li>Let’s start with an example where we know the answer</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Observational sample</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>tb_obs <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">epsilon =</span> <span class="fu">rnorm</span>(<span class="dv">200</span>), <span class="at">W =</span> <span class="fu">rnorm</span>(<span class="dv">200</span>), <span class="at">origin =</span> <span class="st">&#39;Observational&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">X =</span> W <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">200</span>) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Y =</span> <span class="dv">3</span><span class="sc">*</span>X <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>W <span class="sc">+</span> epsilon)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co"># Experimental sample</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>tb_exp <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">epsilon =</span> <span class="fu">rnorm</span>(<span class="dv">200</span>), <span class="at">W =</span> <span class="fu">rnorm</span>(<span class="dv">200</span>), <span class="at">X =</span> <span class="fu">rnorm</span>(<span class="dv">200</span>) <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="at">origin =</span> <span class="st">&#39;Experimental&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Y =</span> <span class="dv">3</span><span class="sc">*</span>X <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>W <span class="sc">+</span> epsilon)</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co"># Together!</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>tb <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(tb_obs, tb_exp)</span></code></pre></div>
+</div>
+<div id="example-3" class="slide section level1">
+<h1>Example</h1>
+<ul>
+<li>How can we check whether a given method gives us the true causal
+effect of <span class="math inline">\(X\)</span> on <span
+class="math inline">\(Y\)</span> of <span
+class="math inline">\(3\)</span>?</li>
+<li>Simulate it! Create the data many times, try our method each time,
+and see the mean and sampling distribution of what we get</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>create_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  tb_obs <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">epsilon =</span> <span class="fu">rnorm</span>(<span class="dv">200</span>), <span class="at">W =</span> <span class="fu">rnorm</span>(<span class="dv">200</span>), <span class="at">origin =</span> <span class="st">&#39;Observational&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">X =</span> W <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">200</span>) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Y =</span> <span class="dv">3</span><span class="sc">*</span>X <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>W <span class="sc">+</span> epsilon)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  tb_exp <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">epsilon =</span> <span class="fu">rnorm</span>(<span class="dv">200</span>), <span class="at">W =</span> <span class="fu">rnorm</span>(<span class="dv">200</span>), <span class="at">X =</span> <span class="fu">rnorm</span>(<span class="dv">200</span>) <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="at">origin =</span> <span class="st">&#39;Experimental&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Y =</span> <span class="dv">3</span><span class="sc">*</span>X <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>W <span class="sc">+</span> epsilon)</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  tb <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(tb_obs, tb_exp)</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  <span class="fu">return</span>(tb)</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="example-4" class="slide section level1">
+<h1>Example</h1>
+<ul>
+<li>Let’s try regular ol’ regress-<span
+class="math inline">\(Y\)</span>-on-<span
+class="math inline">\(X\)</span>. Shouldn’t work.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>run_model <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y<span class="sc">~</span>X, <span class="at">data =</span> <span class="fu">create_data</span>())</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">coef</span>(m)[<span class="dv">2</span>])</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>}</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span> <span class="sc">%&gt;%</span> <span class="fu">map_dbl</span>(run_model) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span></code></pre></div>
+<pre><code>## [1] 1.865277</code></pre>
+</div>
+<div id="example-5" class="slide section level1">
+<h1>Example</h1>
+<ul>
+<li>The mean of the sample distribution is off because our analysis has
+not eliminated the other reasons ( <span
+class="math inline">\(W\)</span> ) why <span
+class="math inline">\(X\)</span> and <span
+class="math inline">\(Y\)</span> might be related</li>
+<li>In this case <span class="math inline">\(W\)</span> makes them
+<em>more negatively</em> related - still counts</li>
+<li>How can we identify the effect?</li>
+</ul>
+</div>
+<div id="eliminate-alternative-explanations"
+class="slide section level1">
+<h1>Eliminate Alternative Explanations</h1>
+<ul>
+<li>We can remove the variation in <span
+class="math inline">\(X\)</span> and <span
+class="math inline">\(Y\)</span> generated by <span
+class="math inline">\(W\)</span>, leaving <span class="math inline">\(X
+\rightarrow Y\)</span> as the only possible explanation for their
+relationship</li>
+<li>We know this identifies the effect <em>not because we got the right
+answer</em> (in the real world we don’t know what the right answer is!)
+but because <em>based on our understanding of the data, this accounts
+for all alternative explanations</em></li>
+<li>Let’s try it with a regression control</li>
+</ul>
+</div>
+<div id="eliminate-alternative-explanations-1"
+class="slide section level1">
+<h1>Eliminate Alternative Explanations</h1>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>run_model_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y<span class="sc">~</span>X <span class="sc">+</span> W, <span class="at">data =</span> <span class="fu">create_data</span>())</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">coef</span>(m)[<span class="dv">2</span>])</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>}</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span> <span class="sc">%&gt;%</span> <span class="fu">map_dbl</span>(run_model_2) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span></code></pre></div>
+<pre><code>## [1] 2.997931</code></pre>
+</div>
+<div id="isolate-good-variation" class="slide section level1">
+<h1>Isolate Good Variation</h1>
+<ul>
+<li>Some portion of the variation identifies our effect (the portion not
+explained by <span class="math inline">\(W\)</span>)</li>
+<li>With the control we shaved away the <span
+class="math inline">\(W\)</span> variation to get what we want</li>
+<li>But sometimes we can just locate and isolate the variation we
+want</li>
+<li>Here, we know that the variation <em>among the experimental
+sample</em> identifies our effect, since among that sample there’s no
+alternative explanation</li>
+</ul>
+</div>
+<div id="isolate-good-variation-1" class="slide section level1">
+<h1>Isolate Good Variation</h1>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>run_model_3 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y<span class="sc">~</span>X, <span class="at">data =</span> <span class="fu">create_data</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(origin <span class="sc">==</span> <span class="st">&#39;Experimental&#39;</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">coef</span>(m)[<span class="dv">2</span>])</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>}</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span> <span class="sc">%&gt;%</span> <span class="fu">map_dbl</span>(run_model_3) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span></code></pre></div>
+<pre><code>## [1] 2.97789</code></pre>
+</div>
+<div id="key-concepts" class="slide section level1">
+<h1>Key Concepts</h1>
+<ul>
+<li>There is an <em>underlying true theoretical model</em></li>
+<li>We <em>want to estimate a particular part of that model</em>
+(generally, the causal effect of something on something else)</li>
+<li>That model tells us <em>how the data is generated</em> (“Data
+Generating Process”)</li>
+<li>So when we <em>see the data</em>, we know all the reasons why two
+variables might be related</li>
+<li>If we want to pick out just that causal effect, we must isolate the
+right variation, eliminating alternative explanations</li>
+<li>Variation means <em>differences we can compare</em>, i.e. “who are
+we comparing for whom their differences identify the effect?”</li>
+</ul>
+</div>
+<div id="arteaga-2018" class="slide section level1">
+<h1>Arteaga 2018</h1>
+<ul>
+<li>As an example, we will look at the 2018 Carolina Arteaga study, “<a
+href="https://www.sciencedirect.com/science/article/pii/S0047272717301809">The
+Effect of Human Capital on Earnings</a>”</li>
+<li>We know that education increases earnings from other studies ( <span
+class="math inline">\(Education \rightarrow Earnings\)</span> )</li>
+<li>But <em>why</em>? Two prominent explanations in economics: (1)
+education improves skill (human capital), which improves earnings
+because you become a better worker, or (2) education lets you show off
+your skills (signaling), which improves earnings because you can
+convince employers you were already a good worker</li>
+<li>How can we isolate the (1) effect?</li>
+</ul>
+</div>
+<div id="arteaga-2018-1" class="slide section level1">
+<h1>Arteaga 2018</h1>
+<ul>
+<li>Imagine we see that people with more education earn more money. What
+might be the reasons for that?</li>
+<li>It improves skill (human capital)</li>
+<li>It lets you show off skill (signaling)</li>
+<li>It gives you connections (networking)</li>
+<li>It doesn’t do anything, but for various reasons people who would
+have earned more anyway get more education (selection)</li>
+<li>Other reasons!</li>
+</ul>
+</div>
+<div id="arteaga-2018-2" class="slide section level1">
+<h1>Arteaga 2018</h1>
+<ul>
+<li>From that, we know that simply looking at the raw earnings/schooling
+relationship doesn’t <strong>identify</strong> the human capital
+effect</li>
+<li>(and keep in mind, there are multiple effects we might <em>want</em>
+to identify. Identification is about the theoretical concept you
+<em>want</em>. Signaling would also be a way education would cause
+earnings, and a different study would want to identify that effect, but
+we don’t want that here)</li>
+<li>How can we isolate just the variation that represents human
+capital</li>
+</ul>
+</div>
+<div id="arteaga-2018-3" class="slide section level1">
+<h1>Arteaga 2018</h1>
+<ul>
+<li>Arteaga <strong>thinks about the theoretical concepts at
+play</strong> and says “variation related to <em>what you learn</em> is
+what we want, but variation related to <em>what the employer can
+see</em> is not, since that can be a signal”</li>
+<li>So we must find cases where <em>some people got more school and
+others got less</em> (variation), but in a way that <em>changed what
+they learned but not what the employer sees</em> (identifying the human
+capital effect)</li>
+</ul>
+</div>
+<div id="arteaga-2018-4" class="slide section level1">
+<h1>Arteaga 2018</h1>
+<ul>
+<li>She found a top Colombian business school that reduced the number of
+classes required to graduate (changes what you learn, so variation in
+human capital), but not in a way that would be immediately apparent to
+employers (no variation in signaling)</li>
+<li>Looking at students in the <em>same program</em> (no selection
+differences, no networking differences) before and after the change
+should identify <strong>only</strong> the human capital effect</li>
+<li>What’s left? We’re doing a before/after comparison so there might be
+some wage changes over time, so we also remove any time variation in
+wages at <em>other</em> top business programs</li>
+</ul>
+</div>
+<div id="arteaga-2018-5" class="slide section level1">
+<h1>Arteaga 2018</h1>
+<ul>
+<li>What does this mean?</li>
+<li>If we’re right about what variation this particular setting
+<em>excludes</em>, then there shouldn’t be any difference in the kinds
+of students passing through from before the change to after</li>
+<li>And we can get the <em>effect of the reduced class material</em> by
+looking at how the wage changed before/after, compared to those same
+before/after changes at other institutions</li>
+<li>This will be evidence of a human capital effect!</li>
+</ul>
+</div>
+<div id="arteaga-2018-6" class="slide section level1">
+<h1>Arteaga 2018</h1>
+<h6 id="study-duration"><strong>Study Duration</strong></h6>
+<p><img src="figures/Lecture_02_Arteaga_Duration.png" width="60%" height="60%" /></p>
+</div>
+<div id="arteaga-2018-7" class="slide section level1">
+<h1>Arteaga 2018</h1>
+<h6 id="null-beforeafter-selection-differences"><strong>Null
+Before/After Selection Differences</strong></h6>
+<p><img src="figures/Lecture_02_Arteaga_Check.png" width="60%" height="60%" /></p>
+</div>
+<div id="arteaga-2018-8" class="slide section level1">
+<h1>Arteaga 2018</h1>
+<h6 id="wage-effects-in-economics"><strong>Wage Effects in
+Economics</strong></h6>
+<p><img src="figures/Lecture_02_Arteaga_Econ.png" width="60%" /></p>
+</div>
+<div id="arteaga-2018-9" class="slide section level1">
+<h1>Arteaga 2018</h1>
+<ul>
+<li>Notice how our approach to identification had <em>nothing to do with
+a regression</em></li>
+<li>The paper has a regression too, but we did this all with
+graphs!</li>
+<li>Regression is one way to get at these effects, but it is only a tool
+to help is isolate variation when we want to get certain types of
+conditional means</li>
+<li>But it is <em>only</em> a tool. Our real goal is to figure out what
+variation we want and think about how we can use data and setting to
+isolate it. Maybe we do that with regression, maybe not</li>
+</ul>
+</div>
+<div id="agan-starr-2017" class="slide section level1">
+<h1>Agan &amp; Starr 2017</h1>
+<ul>
+<li>Let’s look through the (very short) paper by Again &amp; Starr
+2017.</li>
+<li>They do a “field experiment” (i.e. they’ve randomized something but
+it’s not done in a fully controlled lab setting)</li>
+<li>But that doesn’t get them off the hook of thinking about
+identification!</li>
+</ul>
+</div>
+<div id="agan-starr-2017-1" class="slide section level1">
+<h1>Agan &amp; Starr 2017</h1>
+<p>Discussion questions:</p>
+<ul>
+<li>How do they think about the <em>reasons why treatment</em> (criminal
+record) <em>and outcome</em> (job callbacks) are related?</li>
+<li>What variation are they interested in?</li>
+<li>How do they plan to isolate that variation? Why do they think it
+will work?</li>
+</ul>
+</div>
+<div id="next-time" class="slide section level1">
+<h1>Next Time</h1>
+<ul>
+<li>Next time we’ll be discussing an approach to modeling out these
+sorts of scenarios so we can know exactly how to identify the effects we
+want</li>
+<li>These are known as <em>causal diagrams</em></li>
+<li>Read Chapters 6 and 7 in <em>The Effect</em></li>
+</ul>
+</div>
+<div class="footer">
+  <div class="footer-left">
+    <img src="logo.jpg" class="footer-logo-image">
+  </div>
+  <div class="footer-center">
+   Andreas Steinmayr
+  </div>
+  <div class="footer-right">
+    <span class="course-number">404050 Impact Evaluation </span>
+  </div>
+</div>
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+</body>
+</html>

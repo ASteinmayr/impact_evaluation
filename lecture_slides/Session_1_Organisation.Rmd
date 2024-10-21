@@ -1,13 +1,13 @@
 ---
 output:
-  beamer_presentation:
-    includes:
-      in_header: header.tex  # to include LaTeX footer definition
   slidy_presentation:
     self_contained: false
     css: template.css
     includes:
       after_body: footer.html
+  beamer_presentation:
+    includes:
+      in_header: header.tex  # to include LaTeX footer definition
   ioslides_presentation:
     css: template.css
     includes:
