@@ -214,7 +214,7 @@ process</li>
 <span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log.profit =</span> <span class="dv">2</span><span class="sc">*</span>tech <span class="sc">-</span> .<span class="dv">3</span><span class="sc">*</span>IP.spend <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">5000</span>,<span class="at">mean=</span><span class="dv">2</span>))</span>
 <span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co"># Now let&#39;s check for how profit and IP.spend are correlated!</span></span>
 <span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>log.profit,df<span class="sc">$</span>IP.spend)</span></code></pre></div>
-<pre><code>## [1] 0.1539768</code></pre>
+<pre><code>## [1] 0.1105962</code></pre>
 <ul>
 <li>Uh-oh! Truth is negative relationship, but data says positive!!</li>
 </ul>
@@ -378,7 +378,7 @@ experiment-like result</li>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log.profit.resid =</span> log.profit <span class="sc">-</span> <span class="fu">mean</span>(log.profit),</span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>         <span class="at">IP.spend.resid =</span> IP.spend <span class="sc">-</span> <span class="fu">mean</span>(IP.spend)) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>()</span>
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>log.profit.resid,df<span class="sc">$</span>IP.spend.resid)</span></code></pre></div>
-<pre><code>## [1] -0.304748</code></pre>
+<pre><code>## [1] -0.3485203</code></pre>
 <ul>
 <li>Negative! Hooray</li>
 </ul>
@@ -414,18 +414,18 @@ experiment-like result</li>
 <tbody>
 <tr class="odd">
 <td>(Intercept)</td>
-<td>1.442***</td>
-<td>1.955***</td>
+<td>1.476***</td>
+<td>2.022***</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(0.031)</td>
+<td>(0.032)</td>
 <td>(0.030)</td>
 </tr>
 <tr class="odd">
 <td>IP.spend</td>
-<td>0.098***</td>
-<td>-0.276***</td>
+<td>0.073***</td>
+<td>-0.327***</td>
 </tr>
 <tr class="even">
 <td></td>
@@ -435,12 +435,12 @@ experiment-like result</li>
 <tr class="odd">
 <td>tech</td>
 <td></td>
-<td>1.922***</td>
+<td>2.058***</td>
 </tr>
 <tr class="even">
 <td></td>
 <td></td>
-<td>(0.048)</td>
+<td>(0.049)</td>
 </tr>
 <tr class="odd">
 <td>Num.Obs.</td>
@@ -449,13 +449,13 @@ experiment-like result</li>
 </tr>
 <tr class="even">
 <td>R2</td>
-<td>0.024</td>
-<td>0.258</td>
+<td>0.012</td>
+<td>0.270</td>
 </tr>
 <tr class="odd">
 <td>RMSE</td>
-<td>1.15</td>
-<td>1.00</td>
+<td>1.18</td>
+<td>1.01</td>
 </tr>
 </tbody><tfoot>
 <tr class="odd">

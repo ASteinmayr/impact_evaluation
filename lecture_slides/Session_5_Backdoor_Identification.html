@@ -1,0 +1,1162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Session_5_Backdoor_Identification.knit</title>
+  <style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+            pre > code.sourceCode { white-space: pre; position: relative; }
+            pre > code.sourceCode > span { line-height: 1.25; }
+            pre > code.sourceCode > span:empty { height: 1.2em; }
+            .sourceCode { overflow: visible; }
+            code.sourceCode > span { color: inherit; text-decoration: inherit; }
+            div.sourceCode { margin: 1em 0; }
+            pre.sourceCode { margin: 0; }
+            @media screen {
+            div.sourceCode { overflow: auto; }
+            }
+            @media print {
+            pre > code.sourceCode { white-space: pre-wrap; }
+            pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+            }
+            pre.numberSource code
+              { counter-reset: source-line 0; }
+            pre.numberSource code > span
+              { position: relative; left: -4em; counter-increment: source-line; }
+            pre.numberSource code > span > a:first-child::before
+              { content: counter(source-line);
+                position: relative; left: -1em; text-align: right; vertical-align: baseline;
+                border: none; display: inline-block;
+                -webkit-touch-callout: none; -webkit-user-select: none;
+                -khtml-user-select: none; -moz-user-select: none;
+                -ms-user-select: none; user-select: none;
+                padding: 0 4px; width: 4em;
+                color: #aaaaaa;
+              }
+            pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+            div.sourceCode
+              {   }
+            @media screen {
+            pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+            }
+            code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+            code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+            code span.at { color: #7d9029; } /* Attribute */
+            code span.bn { color: #40a070; } /* BaseN */
+            code span.bu { color: #008000; } /* BuiltIn */
+            code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+            code span.ch { color: #4070a0; } /* Char */
+            code span.cn { color: #880000; } /* Constant */
+            code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+            code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+            code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+            code span.dt { color: #902000; } /* DataType */
+            code span.dv { color: #40a070; } /* DecVal */
+            code span.er { color: #ff0000; font-weight: bold; } /* Error */
+            code span.ex { } /* Extension */
+            code span.fl { color: #40a070; } /* Float */
+            code span.fu { color: #06287e; } /* Function */
+            code span.im { color: #008000; font-weight: bold; } /* Import */
+            code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+            code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+            code span.op { color: #666666; } /* Operator */
+            code span.ot { color: #007020; } /* Other */
+            code span.pp { color: #bc7a00; } /* Preprocessor */
+            code span.sc { color: #4070a0; } /* SpecialChar */
+            code span.ss { color: #bb6688; } /* SpecialString */
+            code span.st { color: #4070a0; } /* String */
+            code span.va { color: #19177c; } /* Variable */
+            code span.vs { color: #4070a0; } /* VerbatimString */
+            code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+          </style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <script src="Session_5_Backdoor_Identification_files/header-attrs-2.28/header-attrs.js"></script>
+  <link href="Session_5_Backdoor_Identification_files/slidy-2/styles/slidy.css" rel="stylesheet" />
+  <script src="Session_5_Backdoor_Identification_files/slidy-2/scripts/slidy.js"></script>
+  <script src="Session_5_Backdoor_Identification_files/slidy_shiny-1/slidy_shiny.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="template.css" />
+</head>
+<body>
+<div id="section" class="slide section level2">
+<h1></h1>
+<div class="header-container first-slide-header">
+<img src="logo.jpg" class="logo" alt="University Logo">
+<img src="uibk_header1.png" class="header-image" alt="University Header">
+<h1>
+Lecture 5: Back Door Identification (Controlling)
+</h1>
+</div>
+</div>
+<div id="recap" class="slide section level2">
+<h1>Recap</h1>
+<ul>
+<li>Last lecture, we covered how to create causal diagrams</li>
+<li>(aka Directed Acyclic Graphs or DAGs)</li>
+<li>We simply write out the list of the important variables, and draw
+causal arrows indicating what causes what</li>
+<li>This allows us to figure out what we need to do to <em>identify</em>
+our effect of interest</li>
+</ul>
+</div>
+<div id="today" class="slide section level2">
+<h1>Today</h1>
+<ul>
+<li>But HOW? How does it know?</li>
+<li>Today we’ll be covering the <em>process</em> that lets you figure
+out whether you can identify your effect of interest, and how</li>
+<li>What do we need to condition the data on to limit ourselves just to
+the variation that identifies our effect of interest?</li>
+<li>It turns out, once we have our diagram, to be pretty
+straightforward</li>
+</ul>
+</div>
+<div id="the-back-door-and-the-front-door" class="slide section level2">
+<h1>The Back Door and the Front Door</h1>
+<ul>
+<li>The basic way we’re going to be thinking about this is with a
+metaphor</li>
+<li>When you do data analysis, it’s like observing that someone left
+their house for the day</li>
+<li>When you do causal inference, it’s like asking <em>how they left
+their house</em></li>
+<li>You want to <em>make sure</em> that they came out the <em>front
+door</em>, and not out the back door, not out the window, not out the
+chimney</li>
+</ul>
+</div>
+<div id="the-back-door-and-the-front-door-1"
+class="slide section level2">
+<h1>The Back Door and the Front Door</h1>
+<ul>
+<li>Let’s go back to this example</li>
+</ul>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-1-1.png" width="480" /></p>
+</div>
+<div id="the-back-door-and-the-front-door-2"
+class="slide section level2">
+<h1>The Back Door and the Front Door</h1>
+<ul>
+<li>We’re interested in the effect of IP spend on profits. That means
+that our <em>front door</em> is the ways in which IP spend <em>causally
+affects</em> profits</li>
+<li>Our <em>back door</em> is any other thing that might drive a
+correlation between the two - the way that tech affects both</li>
+</ul>
+</div>
+<div id="paths" class="slide section level2">
+<h1>Paths</h1>
+<ul>
+<li>In order to formalize this a little more, we need to think about the
+various <em>paths</em></li>
+<li>We observe that you got out of your house, but we want to know the
+paths you might have walked to get there</li>
+<li>So, what are the paths we can walk to get from IP.spend to
+profits?</li>
+</ul>
+</div>
+<div id="paths-1" class="slide section level2">
+<h1>Paths</h1>
+<ul>
+<li>We can go <code>Ip.spend -&gt; profit</code></li>
+<li>Or <code>IP.spend &lt;- tech -&gt; profit</code></li>
+</ul>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-2-1.png" width="480" /></p>
+</div>
+<div id="the-back-door-and-the-front-door-3"
+class="slide section level2">
+<h1>The Back Door and the Front Door</h1>
+<ul>
+<li>One of these paths is the one we’re interested in!</li>
+<li><code>Ip.spend -&gt; profit</code> is a <em>front door
+path</em></li>
+<li>One of them is not!</li>
+<li><code>IP.spend &lt;- tech -&gt; profit</code> is a <em>back door
+path</em></li>
+</ul>
+</div>
+<div id="now-what" class="slide section level2">
+<h1>Now what?</h1>
+<ul>
+<li>Now, it’s pretty simple!</li>
+<li>In order to make sure you came through the front door…</li>
+<li>We must <em>close the back door</em></li>
+<li>We can do this by <em>controlling/adjusting</em> for things that
+will block that door!</li>
+<li>We can close <code>IP.spend &lt;- tech -&gt; profit</code> by
+adjusting for <code>tech</code></li>
+</ul>
+</div>
+<div id="so" class="slide section level2">
+<h1>So?</h1>
+<ul>
+<li>We already knew that we could get our desired effect in this case by
+controlling for <code>tech</code>.</li>
+<li>But this process lets us figure out what we need to do in a <em>much
+wider range of situations</em></li>
+<li>All we need to do is follow the steps!
+<ul>
+<li>List all the paths</li>
+<li>See which are back doors</li>
+<li>Adjust for a set of variables that closes all the back doors!</li>
+</ul></li>
+<li>(or use a method that singles out the front door - we’ll get
+there)</li>
+</ul>
+</div>
+<div id="example" class="slide section level2">
+<h1>Example</h1>
+<ul>
+<li>How does wine affect your lifespan?</li>
+</ul>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="paths-2" class="slide section level2">
+<h1>Paths</h1>
+<ul>
+<li>Paths from <code>wine</code> to <code>life</code>:</li>
+<li><code>wine -&gt; life</code></li>
+<li><code>wine -&gt; drugs -&gt; life</code></li>
+<li><code>wine &lt;- health -&gt; life</code></li>
+<li><code>wine &lt;- income -&gt; life</code></li>
+<li><code>wine &lt;- health &lt;- U1 -&gt; income -&gt; life</code></li>
+<li><code>wine &lt;- income &lt;- U1 -&gt; health -&gt; life</code></li>
+<li>Don’t leave any out, even the ones that seem redundant!</li>
+</ul>
+</div>
+<div id="paths-3" class="slide section level2">
+<h1>Paths</h1>
+<ul>
+<li><span style="color:red">Front doors</span>/<span
+style="color:blue">Back doors</span></li>
+<li><span style="color:red"><code>wine -&gt; life</code></span></li>
+<li><span
+style="color:red"><code>wine -&gt; drugs -&gt; life</code></span></li>
+<li><span
+style="color:blue"><code>wine &lt;- health -&gt; life</code></span></li>
+<li><span
+style="color:blue"><code>wine &lt;- income -&gt; life</code></span></li>
+<li><span
+style="color:blue"><code>wine &lt;- health &lt;- U1 -&gt; income -&gt; life</code></span></li>
+<li><span
+style="color:blue"><code>wine &lt;- income &lt;- U1 -&gt; health -&gt; life</code></span></li>
+</ul>
+</div>
+<div id="adjusting" class="slide section level2">
+<h1>Adjusting</h1>
+<ul>
+<li>By adjusting/controlling for variables we close these back
+doors</li>
+<li>If an adjusted variable appears anywhere along the path, we can
+close that path off</li>
+<li>Once <em>ALL</em> the back door paths are closed, we have blocked
+all the other ways that a correlation COULD appear except through the
+front door! We’ve identified the causal effect!</li>
+<li>This is “the back door method” for identifying the effect. There are
+other methods; we’ll get to them.</li>
+</ul>
+</div>
+<div id="adjusting-for-health" class="slide section level2">
+<h1>Adjusting for Health</h1>
+<ul>
+<li><span style="color:red">Front doors</span>/<span
+style="color:blue">Open back doors</span>/<span
+style="color:orange">Closed back doors</span></li>
+<li><span style="color:red"><code>wine -&gt; life</code></span></li>
+<li><span
+style="color:red"><code>wine -&gt; drugs -&gt; life</code></span></li>
+<li><span
+style="color:orange"><code>wine &lt;- health -&gt; life</code></span></li>
+<li><span
+style="color:blue"><code>wine &lt;- income -&gt; life</code></span></li>
+<li><span
+style="color:orange"><code>wine &lt;- health &lt;- U1 -&gt; income -&gt; life</code></span></li>
+<li><span
+style="color:orange"><code>wine &lt;- income &lt;- U1 -&gt; health -&gt; life</code></span></li>
+</ul>
+</div>
+<div id="adjusting-for-health-1" class="slide section level2">
+<h1>Adjusting for Health</h1>
+<ul>
+<li>Clearly, adjusting for health isn’t ENOUGH to identify</li>
+<li>We need to adjust for health AND income</li>
+<li>Conveniently, regression makes it easy to add additional
+controls</li>
+</ul>
+</div>
+<div id="adjusting-for-health-and-income" class="slide section level2">
+<h1>Adjusting for Health and Income</h1>
+<ul>
+<li><span style="color:red">Front doors</span>/<span
+style="color:blue">Open back doors</span>/<span
+style="color:orange">Closed back doors</span></li>
+<li><span style="color:red"><code>wine -&gt; life</code></span></li>
+<li><span
+style="color:red"><code>wine -&gt; drugs -&gt; life</code></span></li>
+<li><span
+style="color:orange"><code>wine &lt;- health -&gt; life</code></span></li>
+<li><span
+style="color:orange"><code>wine &lt;- income -&gt; life</code></span></li>
+<li><span
+style="color:orange"><code>wine &lt;- health &lt;- U1 -&gt; income -&gt; life</code></span></li>
+<li><span
+style="color:orange"><code>wine &lt;- income &lt;- U1 -&gt; health -&gt; life</code></span></li>
+</ul>
+</div>
+<div id="how-about-drugs" class="slide section level2">
+<h1>How about Drugs?</h1>
+<ul>
+<li>Should we adjust for drugs?</li>
+<li>No! This whole procedure makes that clear</li>
+<li>It’s on a <em>front door path</em></li>
+<li>If we adjusted for that, that’s shutting out part of the way that
+<code>wine</code> <em>DOES</em> affect <code>life</code></li>
+</ul>
+</div>
+<div id="practice" class="slide section level2">
+<h1>Practice</h1>
+<ul>
+<li>We want to know how <code>X</code> affects <code>Y</code>. Find all
+paths and make a list of what to adjust for to close all back doors</li>
+</ul>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="practice-answers" class="slide section level2">
+<h1>Practice Answers</h1>
+<ul>
+<li>Front door paths: <code>X -&gt; Y</code>,
+<code>X -&gt; E -&gt; Y</code></li>
+<li>Back doors: <code>X &lt;- A -&gt; Y</code>,
+<code>X &lt;- B -&gt; Y</code>,
+<code>X &lt;- A &lt;- U1 -&gt; B -&gt; Y</code>,
+<code>X &lt;- B &lt;- U1 -&gt; A -&gt; Y</code>,
+<code>X &lt;- A &lt;- C -&gt; Y</code>,
+<code>X &lt;- B &lt;- U1 -&gt; A &lt;- C -&gt; Y</code></li>
+<li>(that last back door is actually pre-closed, we’ll get to that
+later)</li>
+<li>We can close all back doors by adjusting for <code>A</code> and
+<code>B</code>.</li>
+</ul>
+</div>
+<div id="controlling" class="slide section level2">
+<h1>Controlling</h1>
+<ul>
+<li>So… what does it actually mean to control for something?</li>
+<li>Often the way we <em>will do it</em> is just by adding a control
+variable to a regression. In <span class="math inline">\(Y = \beta_0 +
+\beta_1X + \beta_2Z + \varepsilon\)</span>, the <span
+class="math inline">\(\hat{\beta}_1\)</span> estimate gives the effect
+of <span class="math inline">\(X\)</span> on <span
+class="math inline">\(Y\)</span> *while controlling for <span
+class="math inline">\(Z\)</span>, and if adjusting for <span
+class="math inline">\(Z\)</span> closes all back doors, we’ve identified
+the effect of <span class="math inline">\(X\)</span> on <span
+class="math inline">\(Y\)</span>!</li>
+<li>But what does it <em>mean</em>?</li>
+</ul>
+</div>
+<div id="controlling-1" class="slide section level2">
+<h1>Controlling</h1>
+<ul>
+<li>The <em>idea</em> of controlling for a variable is that we want to
+<em>remove all parts of the <span class="math inline">\(X\)</span>/<span
+class="math inline">\(Y\)</span> relationship that is related to that
+variable</em></li>
+<li>I.e. we want to <em>remove all variation related to that
+variable</em></li>
+<li>A regression control will do this (although it will only do it
+<em>linearly</em>), but anything that achieves this goal will work!</li>
+<li>For example, if you want to “control for income”, we could add
+income as a regression control, <em>or</em> we could pick a sample only
+made up of people with very similar incomes</li>
+<li>No variation in <span class="math inline">\(Z\)</span>: <span
+class="math inline">\(Z\)</span> is controlled for!</li>
+</ul>
+</div>
+<div id="the-two-main-approaches-to-controlling"
+class="slide section level2">
+<h1>The Two Main Approaches to Controlling</h1>
+<h3 id="predicting-variation-what-regression-does">Predicting Variation
+(what regression does):</h3>
+<ul>
+<li>Use <span class="math inline">\(Z\)</span> (and the other controls)
+to predict both <span class="math inline">\(X\)</span> and <span
+class="math inline">\(Y\)</span> as best you can</li>
+<li>Remove all the predictable parts, and use only remaining variation,
+which is unrelated (orthogonal) to <span
+class="math inline">\(Z\)</span></li>
+</ul>
+<h3 id="selecting-non-variation-what-matching-does">Selecting
+Non-Variation (what “matching” does):</h3>
+<ul>
+<li>Choose observations that have different values of <span
+class="math inline">\(X\)</span> but have values of <span
+class="math inline">\(Z\)</span> that are as similar as possible</li>
+<li>With multiple controls, this requires some way of combining them
+together to get a single “similarity” value</li>
+</ul>
+</div>
+<div id="the-two-main-approaches-to-controlling-1"
+class="slide section level2">
+<h1>The Two Main Approaches to Controlling</h1>
+<ul>
+<li>In this class we’ll be focusing mostly on regression</li>
+<li>Purely because that’s what economists do most of the time</li>
+<li>Regression and matching rely on slightly different assumptions to
+work, but neither is better than the other</li>
+<li>“Doubly-robust” methods do both regression AND matching, so that the
+model only fails if the assumptions of BOTH methods fail</li>
+<li>So then, focusing on the “predicting variation” approach…</li>
+</ul>
+</div>
+<div id="controlling-2" class="slide section level2">
+<h1>Controlling</h1>
+<ul>
+<li>Up to now, here’s how we’ve been getting the relationship between
+<code>X</code> and <code>Y</code> while controlling for
+<code>W</code>:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>See what part of <code>X</code> is explained by <code>W</code>, and
+subtract it out. Call the result the residual part of
+<code>X</code>.</li>
+<li>See what part of <code>Y</code> is explained by <code>W</code>, and
+subtract it out. Call the result the residual part of
+<code>Y</code>.</li>
+<li>Get the relationship between the residual part of <code>X</code> and
+the residual part of <code>Y</code>.</li>
+</ol>
+</div>
+<div id="in-code" class="slide section level2">
+<h1>In code</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">w =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="dv">2</span><span class="sc">*</span>w <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y =</span> <span class="dv">1</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">4</span><span class="sc">*</span>w <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x.resid =</span> x <span class="sc">-</span> <span class="fu">predict</span>(<span class="fu">lm</span>(x<span class="sc">~</span>w)),</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>         <span class="at">y.resid =</span> y <span class="sc">-</span> <span class="fu">predict</span>(<span class="fu">lm</span>(y<span class="sc">~</span>w)))</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x, <span class="at">data =</span> df)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y.resid <span class="sc">~</span> x.resid, <span class="at">data =</span> df)</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x<span class="sc">+</span>w, <span class="at">data =</span> df)</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(m1,m2,m3), <span class="at">stars =</span> <span class="cn">TRUE</span>, <span class="at">gof_omit =</span> <span class="st">&#39;Adj|AIC|BIC|F|Lik&#39;</span>)</span></code></pre></div>
+</div>
+<div id="in-code-1" class="slide section level2">
+<h1>In code</h1>
+<table style="width:65%;">
+<colgroup>
+<col width="19%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><ol style="list-style-type: decimal">
+<li></li>
+</ol></th>
+<th><ol start="2" style="list-style-type: decimal">
+<li></li>
+</ol></th>
+<th><ol start="3" style="list-style-type: decimal">
+<li></li>
+</ol></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Intercept)</td>
+<td>-0.217</td>
+<td>0.000</td>
+<td>-0.055</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(0.198)</td>
+<td>(0.098)</td>
+<td>(0.099)</td>
+</tr>
+<tr class="odd">
+<td>x</td>
+<td>2.679***</td>
+<td></td>
+<td>0.960***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(0.092)</td>
+<td></td>
+<td>(0.109)</td>
+</tr>
+<tr class="odd">
+<td>x.resid</td>
+<td></td>
+<td>0.960***</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>(0.109)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>w</td>
+<td></td>
+<td></td>
+<td>4.057***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>(0.234)</td>
+</tr>
+<tr class="odd">
+<td>Num.Obs.</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>R2</td>
+<td>0.896</td>
+<td>0.442</td>
+<td>0.975</td>
+</tr>
+<tr class="odd">
+<td>RMSE</td>
+<td>1.95</td>
+<td>0.97</td>
+<td>0.97</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td colspan="4"><ul>
+<li>p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</li>
+</ul></td>
+</tr>
+</tfoot>
+
+</table>
+</div>
+<div id="in-diagrams" class="slide section level2">
+<h1>In Diagrams</h1>
+<ul>
+<li>The relationship between <code>X</code> and <code>Y</code> reflects
+both <code>X-&gt;Y</code> and <code>X&lt;-W-&gt;Y</code></li>
+<li>We remove the part of <code>X</code> and <code>Y</code> that
+<code>W</code> explains to get rid of <code>X&lt;-W</code> and
+<code>W-&gt;Y</code>, blocking <code>X&lt;-W-&gt;Y</code> and leaving
+<code>X-&gt;Y</code></li>
+</ul>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-7-1.png" width="480" /></p>
+</div>
+<div id="graphically" class="slide section level2">
+<h1>Graphically</h1>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-8-1.gif" width="50%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="intuitively" class="slide section level2">
+<h1>Intuitively</h1>
+<ul>
+<li>So this is all about removing variation explanined by the control
+variable</li>
+<li>That’s why you hear some people refer to controlling as “holding
+<code>W</code> constant” - we literally remove the variation in
+<code>W</code>, leaving it “constant”</li>
+<li>Another way of thinking of it is that you’re looking for variation
+of <code>X</code> and <code>Y</code> <em>within</em> values of
+<code>W</code> - this is made clear in the animation</li>
+<li><strong>Comparing apples to apples</strong></li>
+</ul>
+</div>
+<div id="an-example" class="slide section level2">
+<h1>An Example</h1>
+<ul>
+<li>We’ll borrow an example from the Wooldridge econometrics textbook
+(data available in the <code>wooldridge</code> package)</li>
+<li>LaLonde (1986) is a study of whether a job training program improves
+earnings in 1978 (<code>re78</code>)</li>
+<li>Specifically, it has data on an <em>experiment</em> of
+<em>assigning</em> people to a job training program (data
+<code>jtrain2</code>)</li>
+<li>And also data on people who <em>chose</em> to participate in that
+program, or didn’t (data <code>jtrain3</code>)</li>
+<li>The goal of causal inference - do something to <code>jtrain3</code>
+so it gives us the “correct” result from <code>jtrain2</code></li>
+</ul>
+</div>
+<div id="lalonde" class="slide section level2">
+<h1>LaLonde</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(wooldridge)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co">#EXPERIMENT</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">data</span>(jtrain2)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>jtrain2 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(train) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">wage =</span> <span class="fu">mean</span>(re78))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   train  wage
+##   &lt;int&gt; &lt;dbl&gt;
+## 1     0  4.55
+## 2     1  6.35</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co">#BY CHOICE</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">data</span>(jtrain3)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>jtrain3 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(train) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">wage =</span> <span class="fu">mean</span>(re78))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   train  wage
+##   &lt;int&gt; &lt;dbl&gt;
+## 1     0 21.6 
+## 2     1  6.35</code></pre>
+</div>
+<div id="hmm" class="slide section level2">
+<h1>Hmm…</h1>
+<ul>
+<li>What back doors might the <code>jtrain3</code> analysis be
+facing?</li>
+<li>People who need training want to get it but are likely to get lower
+wages anyway!</li>
+</ul>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="apples-to-apples" class="slide section level2">
+<h1>Apples to Apples</h1>
+<ul>
+<li>The two data sets are looking at very different groups of
+people!</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">library</span>(vtable)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">sumtable</span>(<span class="fu">select</span>(jtrain2,re75,re78), <span class="at">out =</span> <span class="st">&#39;return&#39;</span>)</span></code></pre></div>
+<pre><code>##   Variable   N Mean Std. Dev. Min Pctl. 25 Pctl. 75 Max
+## 1     re75 445  1.4       3.2   0        0      1.2  25
+## 2     re78 445  5.3       6.6   0        0      8.1  60</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">sumtable</span>(<span class="fu">select</span>(jtrain3,re75,re78), <span class="at">out =</span> <span class="st">&#39;return&#39;</span>)</span></code></pre></div>
+<pre><code>##   Variable    N Mean Std. Dev. Min Pctl. 25 Pctl. 75 Max
+## 1     re75 2675   18        14   0      7.6       26 157
+## 2     re78 2675   21        16   0      9.2       29 121</code></pre>
+</div>
+<div id="controlling-3" class="slide section level2">
+<h1>Controlling</h1>
+<ul>
+<li>We can’t measure “needs training” directly, but we can sort of
+control for it by limiting ourselves solely to the kind of people who
+need it - those who had low wages (less than 1.2k USD) in 1975</li>
+</ul>
+<pre><code>## # A tibble: 2 × 2
+##   train  wage
+##   &lt;int&gt; &lt;dbl&gt;
+## 1     0  4.55
+## 2     1  6.35</code></pre>
+<pre><code>## # A tibble: 2 × 2
+##   train  wage
+##   &lt;int&gt; &lt;dbl&gt;
+## 1     0  5.62
+## 2     1  6.00</code></pre>
+</div>
+<div id="controlling-4" class="slide section level2">
+<h1>Controlling</h1>
+<ul>
+<li>Not exactly the same (not surprising - we were pretty arbitrary in
+how we controlled for <code>need.tr</code>, and we never closed
+<code>train &lt;- U -&gt; wage</code>, oh and we left out plenty of
+other back doors: race, age, etc.) but an improvement</li>
+<li>This is a demonstration of controlling by choosing a sample; we
+could also just control for 1975 wages</li>
+</ul>
+</div>
+<div id="controlling-5" class="slide section level2">
+<h1>Controlling</h1>
+<table style="width:68%;">
+<colgroup>
+<col width="19%" />
+<col width="18%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><ol style="list-style-type: decimal">
+<li></li>
+</ol></th>
+<th><ol start="2" style="list-style-type: decimal">
+<li></li>
+</ol></th>
+<th><ol start="3" style="list-style-type: decimal">
+<li></li>
+</ol></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Intercept)</td>
+<td>21.554***</td>
+<td>5.653***</td>
+<td>4.958***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(0.304)</td>
+<td>(0.360)</td>
+<td>(0.431)</td>
+</tr>
+<tr class="odd">
+<td>train</td>
+<td>-15.205***</td>
+<td>-0.582</td>
+<td>0.017</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(1.155)</td>
+<td>(0.841)</td>
+<td>(0.865)</td>
+</tr>
+<tr class="odd">
+<td>re75</td>
+<td></td>
+<td>0.834***</td>
+<td>0.908***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>(0.015)</td>
+<td>(0.029)</td>
+</tr>
+<tr class="odd">
+<td>I(re75^2)</td>
+<td></td>
+<td></td>
+<td>-0.001**</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>(0.000)</td>
+</tr>
+<tr class="odd">
+<td>Num.Obs.</td>
+<td>2675</td>
+<td>2675</td>
+<td>2675</td>
+</tr>
+<tr class="even">
+<td>R2</td>
+<td>0.061</td>
+<td>0.553</td>
+<td>0.554</td>
+</tr>
+<tr class="odd">
+<td>RMSE</td>
+<td>15.15</td>
+<td>10.45</td>
+<td>10.43</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td colspan="4"><ul>
+<li>p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</li>
+</ul></td>
+</tr>
+</tfoot>
+
+</table>
+</div>
+<div id="bad-controls" class="slide section level2">
+<h1>Bad Controls</h1>
+<ul>
+<li>So far so good - we have the concept of what it means to control and
+some ways we can do it, so we can get apples-to-apples comparisons</li>
+<li>But what should we control for?</li>
+<li>Everything, right? We want to make sure our comparison is as apple-y
+as possible!</li>
+<li>Well, no, not actually</li>
+</ul>
+</div>
+<div id="bad-controls-1" class="slide section level2">
+<h1>Bad Controls</h1>
+<ul>
+<li>Some controls can take you away from showing you the front door</li>
+<li>We already discussed how it’s not a good idea to block a front-door
+path.</li>
+<li>An increase in the price of cigarettes might improve your health,
+but not if we control for the number of cigarettes you smoke!</li>
+</ul>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-16-1.png" width="480" /></p>
+</div>
+<div id="bad-controls-2" class="slide section level2">
+<h1>Bad Controls</h1>
+<ul>
+<li>There is another kind of bad control - a <em>collider</em></li>
+<li>Basically, if you’re listing out paths, and you see a path where the
+arrows <em>collide</em> by both pointing at the same variable,
+<strong>that path is already blocked</strong></li>
+<li>Like this: <code>X &lt;- W -&gt; C &lt;- Z -&gt; Y</code></li>
+<li>Note the <code>-&gt; C &lt;-</code>. Those arrow are colliding!</li>
+<li>If we control for the collider <code>C</code>, <em>that path opens
+back up!</em></li>
+</ul>
+</div>
+<div id="colliders" class="slide section level2">
+<h1>Colliders</h1>
+<ul>
+<li>One kind of diagram (of many) where this might pop up:</li>
+</ul>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-17-1.png" width="480" /></p>
+</div>
+<div id="colliders-1" class="slide section level2">
+<h1>Colliders</h1>
+<ul>
+<li>How could this be?</li>
+<li>Because even if two variables <em>cause</em> the same thing
+(<code>a -&gt; m</code>, <code>b -&gt; m</code>), that doesn’t make them
+related. Your parents both caused your genetic makeup, that doesn’t make
+<em>their</em> genetics related. Knowing dad’s eye color tells you
+nothing about mom’s.</li>
+<li>But <em>within given values of the collider</em>, they ARE related.
+If you’re brown-eyed, then observing that your dad has blue eyes tells
+us that your mom is brown-eyed</li>
+</ul>
+</div>
+<div id="colliders-2" class="slide section level2">
+<h1>Colliders</h1>
+<ul>
+<li>So here, <code>x &lt;- a -&gt; m &lt;- b -&gt; y</code> is
+pre-blocked, no problem. <code>a</code> and <code>b</code> are
+unrelated, so no back door issue!</li>
+<li>Control for <code>m</code> and now <code>a</code> and <code>b</code>
+are related, back door path open.</li>
+</ul>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-18-1.png" width="480" /></p>
+</div>
+<div id="example-1" class="slide section level2">
+<h1>Example</h1>
+<ul>
+<li>You want to know if programming skills reduce your social
+skills</li>
+<li>So you go to a tech company and test all their employees on
+programming and social skills</li>
+<li>Let’s imagine that the <em>truth</em> is that programming skills and
+social skills are unrelated</li>
+<li>But you find a negative relationship! What gives?</li>
+</ul>
+</div>
+<div id="example-2" class="slide section level2">
+<h1>Example</h1>
+<ul>
+<li>Oops! By surveying only the tech company, you controlled for “works
+in a tech company”</li>
+<li>To do that, you need programming skills, social skills, or both!
+It’s a collider!</li>
+</ul>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-19-1.png" width="480" /></p>
+</div>
+<div id="example-3" class="slide section level2">
+<h1>Example</h1>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">14233</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">prog=</span><span class="fu">rnorm</span>(<span class="dv">1000</span>),<span class="at">social=</span><span class="fu">rnorm</span>(<span class="dv">1000</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hired =</span> (prog <span class="sc">+</span> social <span class="sc">&gt;</span> .<span class="dv">25</span>))</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co"># Truth</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(social<span class="sc">~</span>prog, <span class="at">data =</span> survey)</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co">#Controlling by just surveying those hired</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(social<span class="sc">~</span>prog, <span class="at">data =</span> survey <span class="sc">%&gt;%</span> <span class="fu">filter</span>(hired <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#Surveying everyone and controlling with our normal method</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(social <span class="sc">~</span> prog <span class="sc">+</span> hired, <span class="at">data =</span> survey)</span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(m1,m2,m3), <span class="at">stars =</span> <span class="cn">TRUE</span>, <span class="at">gof_omit =</span> <span class="st">&#39;Adj|BIC|AIC|Lik|F&#39;</span>)</span></code></pre></div>
+</div>
+<div id="example-4" class="slide section level2">
+<h1>Example</h1>
+<table style="width:67%;">
+<colgroup>
+<col width="19%" />
+<col width="13%" />
+<col width="16%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><ol style="list-style-type: decimal">
+<li></li>
+</ol></th>
+<th><ol start="2" style="list-style-type: decimal">
+<li></li>
+</ol></th>
+<th><ol start="3" style="list-style-type: decimal">
+<li></li>
+</ol></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Intercept)</td>
+<td>-0.047</td>
+<td>0.932***</td>
+<td>-0.756***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(0.032)</td>
+<td>(0.046)</td>
+<td>(0.036)</td>
+</tr>
+<tr class="odd">
+<td>prog</td>
+<td>0.036</td>
+<td>-0.468***</td>
+<td>-0.429***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(0.031)</td>
+<td>(0.041)</td>
+<td>(0.029)</td>
+</tr>
+<tr class="odd">
+<td>hiredTRUE</td>
+<td></td>
+<td></td>
+<td>1.659***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>(0.061)</td>
+</tr>
+<tr class="odd">
+<td>Num.Obs.</td>
+<td>1000</td>
+<td>432</td>
+<td>1000</td>
+</tr>
+<tr class="even">
+<td>R2</td>
+<td>0.001</td>
+<td>0.229</td>
+<td>0.428</td>
+</tr>
+<tr class="odd">
+<td>RMSE</td>
+<td>1.01</td>
+<td>0.73</td>
+<td>0.77</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td colspan="4"><ul>
+<li>p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</li>
+</ul></td>
+</tr>
+</tfoot>
+
+</table>
+</div>
+<div id="graphically-1" class="slide section level2">
+<h1>Graphically</h1>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-22-1.gif" width="60%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="colliders-3" class="slide section level2">
+<h1>Colliders</h1>
+<ul>
+<li>This doesn’t just create correlations from nothing, it can also
+distort causal effects that ARE there</li>
+<li>For example, did you know that height is UNrelated to basketball
+skill… among NBA players?</li>
+</ul>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-23-1.png" width="480" /></p>
+</div>
+<div id="colliders-4" class="slide section level2">
+<h1>Colliders</h1>
+<ul>
+<li>Sometimes, things can get real tricky</li>
+<li>In some cases, the same variable NEEDS to be controlled for to close
+a back door path, but it’s a collider on ANOTHER back door path!</li>
+<li>In those cases you just can’t identify the effect, at least not
+easily</li>
+<li>This pops up in estimates of the gender wage gap - example from
+Cunningham’s Mixtape: should you control for occupation when looking at
+gender discrimination in the labor market?</li>
+</ul>
+</div>
+<div id="colliders-in-the-gender-wage-gap" class="slide section level2">
+<h1>Colliders in the Gender Wage Gap</h1>
+<ul>
+<li>We are interested in <code>gender -&gt; discrim -&gt; wage</code>;
+our treatment is <code>gender -&gt; discrim</code>, the discrimination
+caused by your gender</li>
+</ul>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-24-1.png" width="480" /></p>
+</div>
+<div id="colliders-in-the-gender-wage-gap-1"
+class="slide section level2">
+<h1>Colliders in the Gender Wage Gap</h1>
+<ul>
+<li><span style="color:red">Front doors</span>/<span
+style="color:blue">Open back doors</span>/<span
+style="color:orange">Closed back doors</span></li>
+<li><span
+style="color:red"><code>gender -&gt; discrim -&gt; wage</code></span></li>
+<li><span
+style="color:red"><code>gender -&gt; discrim -&gt; occup -&gt; wage</code></span></li>
+<li><span
+style="color:blue"><code>discrim &lt;- gender -&gt; occup -&gt; wage</code></span></li>
+<li><span
+style="color:orange"><code>discrim &lt;- gender -&gt; occup &lt;- abil -&gt; wage</code></span></li>
+<li><span
+style="color:orange"><code>gender -&gt; discrim -&gt; occup &lt;- abil -&gt; wage</code></span></li>
+</ul>
+</div>
+<div id="colliders-in-the-gender-wage-gap-2"
+class="slide section level2">
+<h1>Colliders in the Gender Wage Gap</h1>
+<ul>
+<li>No <code>occup</code> control? Ignore nondiscriminatory reasons to
+choose different occupations by gender</li>
+<li>Control for <code>occup</code>? Open both back doors, create a
+correlation between <code>abil</code> and <code>discrim</code> where
+there wasn’t one</li>
+<li>And also close a FRONT door,
+<code>gender -&gt; discrim -&gt; occup -&gt; wage</code>: discriminatory
+reasons for gender diffs in <code>occup</code></li>
+<li>We actually <em>can’t</em> identify the effect we want in this
+diagram by controlling. It happens!</li>
+<li>Suggests this question goes beyond just controlling for stuff. Real
+research on this topic needs to come up with clever solutions.</li>
+</ul>
+</div>
+<div id="next-time" class="slide section level2">
+<h1>Next Time</h1>
+<ul>
+<li>Perhaps one of the ways we could get at the problem is by isolating
+<em>front doors</em> instead of focusing on closing <em>back
+doors</em></li>
+<li>Many common causal inference methods combine the two!</li>
+<li>Next time we’ll look at the concept of isolating a front door path,
+usually using “natural experiments”</li>
+</ul>
+</div>
+<div id="practice-1" class="slide section level2">
+<h1>Practice</h1>
+<ul>
+<li>We want to know how <code>X</code> affects <code>Y</code>. Find all
+paths and make a list of what to adjust for to close all back doors</li>
+</ul>
+<p><img src="Session_5_Backdoor_Identification_files/figure-slidy/unnamed-chunk-25-1.png" width="672" /></p>
+</div>
+<div id="practice-answers-1" class="slide section level2">
+<h1>Practice Answers</h1>
+<ul>
+<li>Front door paths: <code>X -&gt; Y</code>,
+<code>X -&gt; E -&gt; Y</code></li>
+<li>Back doors: <code>X &lt;- A -&gt; Y</code>,
+<code>X &lt;- B -&gt; Y</code>,
+<code>X &lt;- A &lt;- U1 -&gt; B -&gt; Y</code>,
+<code>X &lt;- B &lt;- U1 -&gt; A -&gt; Y</code>,
+<code>X &lt;- A &lt;- C -&gt; Y</code>,
+<code>X &lt;- B &lt;- U1 -&gt; A &lt;- C -&gt; Y</code></li>
+<li>(<code>X &lt;- B &lt;- U1 -&gt; A &lt;- C -&gt; Y</code> is
+pre-closed by a collider)</li>
+<li>We can close all back doors by adjusting for <code>A</code> and
+<code>B</code>.</li>
+</ul>
+</div>
+<div class="footer">
+  <div class="footer-left">
+    <img src="logo.jpg" class="footer-logo-image">
+  </div>
+  <div class="footer-center">
+   Andreas Steinmayr
+  </div>
+  <div class="footer-right">
+    <span class="course-number">404050 Impact Evaluation </span>
+  </div>
+</div>
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+</body>
+</html>
