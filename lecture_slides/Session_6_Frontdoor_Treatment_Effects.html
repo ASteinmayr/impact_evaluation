@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Session_6_Frontdoor_Treatment_Effects.knit</title>
+  <style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+              </style>
+  <script src="Session_6_Frontdoor_Treatment_Effects_files/header-attrs-2.28/header-attrs.js"></script>
+  <link href="Session_6_Frontdoor_Treatment_Effects_files/slidy-2/styles/slidy.css" rel="stylesheet" />
+  <script src="Session_6_Frontdoor_Treatment_Effects_files/slidy-2/scripts/slidy.js"></script>
+  <script src="Session_6_Frontdoor_Treatment_Effects_files/slidy_shiny-1/slidy_shiny.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="template.css" />
+</head>
+<body>
+<div id="section" class="slide section level2">
+<h1></h1>
+<div class="header-container first-slide-header">
+<img src="logo.jpg" class="logo" alt="University Logo">
+<img src="uibk_header1.png" class="header-image" alt="University Header">
+<h1>
+Lecture : Front Door Identification and Treatment Effects
+</h1>
+</div>
+</div>
+<div id="recap" class="slide section level2">
+<h1>Recap</h1>
+<ul>
+<li>We can represent our <em>causal model of the world</em> in a causal
+diagram</li>
+<li>Once we’ve written the model, it will tell us <em>exactly which
+calculation</em> will identify our effect</li>
+<li>We list all paths between treatment and outcome</li>
+<li>Then, control for the right variables to close all back-door paths
+while leaving all front-door paths open</li>
+</ul>
+</div>
+<div id="but" class="slide section level2">
+<h1>But!</h1>
+<ul>
+<li>There’s a big problem with this!</li>
+<li>Simply, it’s <em>very common</em> that this approach will tell us
+that we need to control for something that we can’t or didn’t
+measure</li>
+<li>It’s also common, since this is social science, to acknowledge that
+there are probably a bunch of things we didn’t think of that
+<em>should</em> be on our diagram, and so we shouldn’t be too confident
+in our ability to close all the back doors</li>
+</ul>
+</div>
+<div id="so-what-then" class="slide section level2">
+<h1>So What Then?</h1>
+<ul>
+<li>In economics in particular, we will try to <em>isolate the variation
+in a single front-door path</em> instead of shutting all the back-door
+paths</li>
+<li>This can be done in a few different ways, which we’ll talk about
+today, and cover heavily through the rest of the course</li>
+<li>Note that all of these will generally <em>combine</em> with
+back-door closing in order to work</li>
+<li>Experiments, Natural Experiments, and (rarely) the Front-Door
+Method</li>
+</ul>
+</div>
+<div id="experiments" class="slide section level2">
+<h1>Experiments</h1>
+<p>What is a randomized experiment?</p>
+<ul>
+<li>The researcher has control over the treatment itself</li>
+<li>They can choose to randomly give it to some people but not
+others</li>
+<li>When you do this, some of the variation in treatment has <em>no back
+doors</em></li>
+<li>Plus, we can <em>find</em> that variation by only using the data
+from our experiment!</li>
+</ul>
+</div>
+<div id="experiments-1" class="slide section level2">
+<h1>Experiments</h1>
+<ul>
+<li>We’ve been talking about identification, we can also refer to a
+variable that is assigned completely at random as “exogenous”</li>
+<li>Something that is caused by some other variable in the diagram (has
+back doors) is <em>endogenous</em></li>
+<li>The random assignment is <em>exogenous</em></li>
+</ul>
+</div>
+<div id="random-experiments-and-causality" class="slide section level2">
+<h1>Random experiments and causality</h1>
+<ul>
+<li>Annoyingly, most things we’d like to know the effect of have
+back-door paths to most of the outcomes we’d like to know the effect
+<em>on</em></li>
+</ul>
+<p><img src="Session_6_Frontdoor_Treatment_Effects_files/figure-slidy/unnamed-chunk-1-1.png" width="576" /></p>
+</div>
+<div id="random-experiments-and-causality-1"
+class="slide section level2">
+<h1>Random experiments and causality</h1>
+<ul>
+<li>The whole idea of running an experiment is to <em>add another source
+of variation in the Treatment that has no back doors</em></li>
+</ul>
+<p>   </p>
+<p><img src="Session_6_Frontdoor_Treatment_Effects_files/figure-slidy/unnamed-chunk-2-1.png" width="960" /></p>
+</div>
+<div id="random-experiments-and-causality-2"
+class="slide section level2">
+<h1>Random experiments and causality</h1>
+<ul>
+<li>If the randomization is truly random, it can’t possibly be related
+to anything on the back doors. It ONLY affects Treatment - nothing
+else!</li>
+<li>So AMONG the people who were randomized in/out of treatment, this is
+what the diagram looks like. Easy identification!</li>
+</ul>
+<p>   </p>
+<p><img src="Session_6_Frontdoor_Treatment_Effects_files/figure-slidy/unnamed-chunk-3-1.png" width="960" /></p>
+</div>
+<div id="experiments-2" class="slide section level2">
+<h1>Experiments</h1>
+<ul>
+<li>So with a randomized experiment, identifying our causal arrow of
+interest is easy, because among the subjects in our experiment, there is
+no back door</li>
+<li>But of course this comes with its own costs!</li>
+</ul>
+</div>
+<div id="problems-with-experiments" class="slide section level2">
+<h1>Problems with Experiments</h1>
+<ul>
+<li>Not always possible/ethical</li>
+<li>Expensive when they are possible/ethical</li>
+<li>The fact they’re expensive can lead us to reduce on sample size</li>
+<li>Or use people who are convenient to experiment on rather than
+representative of everyone (e.g. students)</li>
+<li>People may act differently if they know they’re in an
+experiment</li>
+<li>An artificial intervention may not be the same as the natural
+thing</li>
+<li>People might act due to treatment <em>assignment</em> (placebo
+effect)</li>
+</ul>
+</div>
+<div id="problems-with-experiments-1" class="slide section level2">
+<h1>Problems with Experiments</h1>
+<ul>
+<li>This is not to say that experiments are bad by any means</li>
+<li>But there are reasons we can’t solve every problem with
+experiments</li>
+<li>So if we still want to study causal effects, we may be in a
+situation where an experiment is infeasible, or may be outclassed by a
+<em>natural</em> experiment…</li>
+</ul>
+</div>
+<div id="natural-experiments" class="slide section level2">
+<h1>Natural Experiments</h1>
+<ul>
+<li>A <em>natural experiment</em> can take many forms, but the basic
+idea is that something experiment-like occurs without the researcher’s
+control</li>
+<li>In other words, <em>there is a form of exogenous variation in the
+wild</em></li>
+<li>(or at least conditionally exogenous)</li>
+<li>And we can use that exogenous variation to identify our effect of
+interest</li>
+</ul>
+</div>
+<div id="natural-experiments-1" class="slide section level2">
+<h1>Natural Experiments</h1>
+<ul>
+<li>Let’s take a classic example of the Vietnam lottery draft (Angrist
+and Krueger 1992)</li>
+<li>During the Vietnam war, men were drafted into the US military based
+on their birthdates. The birthdates of the year were put into random
+order, and men were drafted in that order</li>
+<li>Basically, randomly assigning you to military service!</li>
+<li>Being assigned to the draft early gave you extra reason to go to
+college so you could avoid it - they wanted to know how college affected
+your earnings</li>
+</ul>
+</div>
+<div id="natural-experiments-2" class="slide section level2">
+<h1>Natural Experiments</h1>
+<ul>
+<li>Even though the researcher has no control over this process (and
+would likely do it a little differently if they could)…</li>
+<li>If we <em>isolate just the part of military service that is driven
+by this exogenous variation</em>…</li>
+<li>Then <em>that variation in military service is, also,
+exogenous</em></li>
+<li>Just like in an experiment we only use data from people in the
+experiment</li>
+</ul>
+</div>
+<div id="isolating-variation" class="slide section level2">
+<h1>Isolating Variation</h1>
+<ul>
+<li>It’s sort of like the opposite of controlling: Instead of removing
+the variation associated with a variable, we remove all variation
+<em>not</em> associated with it</li>
+<li>This is a way that we can mimic an actual controlled experiment
+using only observational data</li>
+<li>In many cases this is more plausible than controlling for enough
+stuff because we have ideally <em>moved the assumptions we need to make
+to an easier variable</em></li>
+</ul>
+</div>
+<div id="moving-the-assumptions" class="slide section level2">
+<h1>Moving the Assumptions</h1>
+<ul>
+<li>In effect, this <em>moves our assumptions</em> from one variable to
+another</li>
+<li>To identify the effect of treatment by controlling for stuff, we
+must identify all back doors between <span
+class="math inline">\(Treatment\)</span> and <span
+class="math inline">\(Outcome\)</span> and close them</li>
+<li>Now, instead, we must identify all back doors between <span
+class="math inline">\(ExogenousVariation\)</span> and <span
+class="math inline">\(Outcome\)</span> (or front doors that don’t pass
+through <span class="math inline">\(Treatment\)</span>) and close all of
+<em>them</em></li>
+</ul>
+</div>
+<div id="moving-the-assumptions-1" class="slide section level2">
+<h1>Moving the Assumptions</h1>
+<ul>
+<li>The same assumptions need to apply! But hopefully those assumptions
+are <em>more plausible</em> for our source of exogenous variation than
+our treatment</li>
+<li>There are a BUNCH of back doors having to do with college
+attendance. It would be really hard to close them all</li>
+<li>But, while we can imagine some stories as to how birthdate might
+have back doors, they’re likely more limited, and maybe we can believe
+we can actually control for all of them</li>
+<li>(like I said, sometimes exogeneity only holds conditionally - we may
+need to control for something! Perhaps richer people are more likely to
+have kids on certain days, so we’d want to control for parental
+income)</li>
+</ul>
+</div>
+<div id="treatment-effects" class="slide section level2">
+<h1>Treatment Effects</h1>
+<ul>
+<li>For any given treatment, there are likely to be <em>many</em>
+treatment effects</li>
+<li>Different individuals will respond to different degrees (or even
+directions!)</li>
+<li>This is called <em>heterogeneous treatment effects</em></li>
+</ul>
+</div>
+<div id="treatment-effects-1" class="slide section level2">
+<h1>Treatment Effects</h1>
+<ul>
+<li>When we identify a treatment effect, what we’re <em>estimating</em>
+is some mixture of all those individual treatment effects</li>
+<li>But what kind of mixture? Is it an average of all of them? An
+average of some of them? A weighted average? Not an average at all?</li>
+<li>What we get depends on <em>the research design itself</em> as well
+as <em>the estimator we use to perform that design</em></li>
+</ul>
+</div>
+<div id="individual-treatment-effects" class="slide section level2">
+<h1>Individual Treatment Effects</h1>
+<ul>
+<li>While we can’t always estimate it directly, the true regression
+model becomes something like</li>
+</ul>
+<p><span class="math display">\[ Y = \beta_0 + \beta_iX + \varepsilon
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\beta_i\)</span> follows its own
+distribution across individuals</li>
+<li>(and remember, this is theoretical - we’d still have those
+individual <span class="math inline">\(\beta_i\)</span>s even with one
+observation per individual and no way to estimate them separately)</li>
+</ul>
+</div>
+<div id="summarizing-effects" class="slide section level2">
+<h1>Summarizing Effects</h1>
+<ul>
+<li>There are methods that try to give us the whole distribution of
+effects (and we’ll talk about some of them next time)</li>
+<li>But often we only get a single effect, <span
+class="math inline">\(\hat{\beta}_1\)</span>.</li>
+<li>This <span class="math inline">\(\hat{\beta}_1\)</span> is some
+summary statistic of the <span class="math inline">\(\beta_i\)</span>
+distribution. But <em>what</em> summary statistic?</li>
+</ul>
+</div>
+<div id="summarizing-effects-1" class="slide section level2">
+<h1>Summarizing Effects</h1>
+<ul>
+<li>Average treatment effect: the mean of <span
+class="math inline">\(\beta_i\)</span></li>
+<li>Conditional average treatment effect (CATE): the mean of <span
+class="math inline">\(\beta_i\)</span> <em>conditional on some
+value</em> (say, “just for men”, i.e. conditional on being a man)</li>
+<li>Weighted average treatment effect (WTE): the weighted mean of <span
+class="math inline">\(\beta_i\)</span>, with weights <span
+class="math inline">\(w_i\)</span></li>
+</ul>
+<p>The latter two come in <em>many</em> flavors</p>
+</div>
+<div id="common-conditional-average-treatment-effects"
+class="slide section level2">
+<h1>Common Conditional Average Treatment Effects</h1>
+<ul>
+<li>The ATE among some demographic group</li>
+<li>The ATE among some specific group (conditional average treatment
+effect)</li>
+<li>The ATE just among people who were actually treated (ATT)</li>
+<li>The ATE just among people who were NOT actually treated (ATUT)</li>
+</ul>
+</div>
+<div id="comon-weighted-average-treatment-effects"
+class="slide section level2">
+<h1>Comon Weighted Average Treatment Effects</h1>
+<ul>
+<li>The ATE weighted by how responsive you are to an
+instrument/treatment assignment (local average treatment effect)</li>
+<li>The ATE weighted by how much variation in treatment you have after
+all back doors are closed (variance-weighted)</li>
+<li>The ATE weighted by how commonly-represented your mix of control
+variables is (distribution-weighted)</li>
+</ul>
+</div>
+<div id="are-they-good" class="slide section level2">
+<h1>Are They Good?</h1>
+<ul>
+<li>Which average you’d <em>want</em> depends on what you’d want to do
+with it</li>
+<li>Want to know how effective a treatment <em>was</em> when it was
+applied? Average Treatment on Treated</li>
+<li>Want to know how effective a treatment would be if applied to
+everyone/at random? Average Treatment Effect</li>
+<li>Want to know how effective a treatment would be if applied <em>just
+a little more broadly?</em> <strong>Marginal Treatment Effect</strong>
+(literally, the effect for the next person who would be treated), or,
+sometimes, Local Average Treatment Effect</li>
+</ul>
+</div>
+<div id="are-they-good-1" class="slide section level2">
+<h1>Are They Good?</h1>
+<ul>
+<li>Different treatment effect averages aren’t <em>wrong</em> but we
+need to pay attention to which one we’re getting, or else we may apply
+the result incorrectly</li>
+<li>We don’t want that!</li>
+<li>A result could end up representing a different group than you’re
+really interested in</li>
+<li>There are technical ways of figuring out what average you get, and
+also intuitive ways</li>
+</ul>
+</div>
+<div class="footer">
+  <div class="footer-left">
+    <img src="logo.jpg" class="footer-logo-image">
+  </div>
+  <div class="footer-center">
+   Andreas Steinmayr
+  </div>
+  <div class="footer-right">
+    <span class="course-number">404050 Impact Evaluation </span>
+  </div>
+</div>
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+</body>
+</html>

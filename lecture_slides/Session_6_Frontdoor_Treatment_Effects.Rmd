@@ -1,0 +1,266 @@
+---
+output:
+  slidy_presentation:
+    self_contained: no
+    css: template.css
+    includes:
+      after_body: footer.html
+  beamer_presentation: default
+---
+
+## 
+
+<div class="header-container first-slide-header">
+  <img src="logo.jpg" class="logo" alt="University Logo">
+  <img src="uibk_header1.png" class="header-image" alt="University Header">
+  <h1>Lecture : Front Door Identification and Treatment Effects</h1> 
+</div>
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(purrr)
+library(patchwork)
+library(ggpubr)
+library(dagitty)
+library(ggdag)
+library(gganimate)
+library(ggthemes)
+library(Cairo)
+library(modelsummary)
+library(wooldridge)
+
+knitr::opts_chunk$set(fig.width = 5, fig.height = 3)
+
+theme_set(
+  theme_minimal(base_size = 10) +   # Adjust base font size
+  theme(
+    plot.title = element_text(size = 10, face = "bold"),  # Title font size and boldness
+    axis.text = element_text(size = 8),                  # Axis text size
+    axis.title = element_text(size = 10),                # Axis label size
+    legend.title = element_text(size = 8),               # Legend title font size
+    legend.text = element_text(size = 7)                 # Legend item font size
+  )
+)
+```
+
+
+
+## Recap
+
+- We can represent our *causal model of the world* in a causal diagram
+- Once we've written the model, it will tell us *exactly which calculation* will identify our effect
+- We list all paths between treatment and outcome
+- Then, control for the right variables to close all back-door paths while leaving all front-door paths open
+
+## But!
+
+- There's a big problem with this!
+- Simply, it's *very common* that this approach will tell us that we need to control for something that we can't or didn't measure 
+- It's also common, since this is social science, to acknowledge that there are probably a bunch of things we didn't think of that *should* be on our diagram, and so we shouldn't be too confident in our ability to close all the back doors
+
+## So What Then?
+
+- In economics in particular, we will try to *isolate the variation in a single front-door path* instead of shutting all the back-door paths
+- This can be done in a few different ways, which we'll talk about today, and cover heavily through the rest of the course
+- Note that all of these will generally *combine* with back-door closing in order to work
+- Experiments, Natural Experiments, and (rarely) the Front-Door Method 
+
+## Experiments
+
+What is a randomized experiment?
+
+- The researcher has control over the treatment itself
+- They can choose to randomly give it to some people but not others
+- When you do this, some of the variation in treatment has *no back doors*
+- Plus, we can *find* that variation by only using the data from our experiment!
+
+## Experiments
+
+- We've been talking about identification, we can also refer to a variable that is assigned completely at random as "exogenous"
+- Something that is caused by some other variable in the diagram (has back doors) is *endogenous*
+- The random assignment is *exogenous*
+
+## Random experiments and causality
+
+- Annoyingly, most things we'd like to know the effect of have back-door paths to most of the outcomes we'd like to know the effect *on*
+
+```{r, dev = 'CairoPNG', fig.height = 5, fig.width=6}
+dag <- dagify(Outcome ~ Treatment + Endogeneity,
+              Treatment ~ Endogeneity,
+              coords=list(
+                x=c(Treatment = 1, Endogeneity = 2, Outcome = 3),
+                y=c(Treatment = 1, Endogeneity = 2, Outcome = 1)
+              )) %>% tidy_dagitty()
+ggdag_classic(dag,node_size=10) + 
+  theme_dag_blank() +
+  expand_limits(x=c(.5,3.5))
+```
+
+## Random experiments and causality
+
+- The whole idea of running an experiment is to *add another source of variation in the Treatment that has no back doors*
+
+&nbsp;
+&nbsp;
+
+
+```{r, dev = 'CairoPNG', fig.height = 5, fig.width=10}
+dag <- dagify(Outcome ~ Treatment + Endogeneity,
+              Treatment ~ Endogeneity,
+              Treatment ~ Randomization,
+              coords = list(
+                x = c(Randomization = 0, Treatment = 3, Endogeneity = 5, Outcome = 7),
+                y = c(Randomization = 1, Treatment = 1, Endogeneity = 2, Outcome = 1)
+              )) %>% tidy_dagitty()
+
+ggdag_classic(dag, node_size = 7) + 
+  theme_dag_blank() + 
+  expand_limits(x = c(-1, 7))  
+```
+
+## Random experiments and causality
+
+- If the randomization is truly random, it can't possibly be related to anything on the back doors. It ONLY affects Treatment - nothing else!
+- So AMONG the people who were randomized in/out of treatment, this is what the diagram looks like. Easy identification!
+
+&nbsp;
+&nbsp;
+
+```{r, dev = 'CairoPNG', fig.height = 2, fig.width=10}
+dag <- dagify(Outcome ~ Treatment ,
+              Treatment ~  Randomization,
+              coords=list(
+                x=c(Randomization = 0,Treatment = 3,  Outcome = 5),
+                y=c(Randomization = 1, Treatment = 1,  Outcome = 1)
+              )) %>% tidy_dagitty()
+ggdag_classic(dag,node_size=10) + 
+  theme_dag_blank() + 
+  expand_limits(x=c(-.5,2.5))
+```
+
+## Experiments
+
+- So with a randomized experiment, identifying our causal arrow of interest is easy, because among the subjects in our experiment, there is no back door
+- But of course this comes with its own costs!
+
+## Problems with Experiments
+
+- Not always possible/ethical
+- Expensive when they are possible/ethical
+- The fact they're expensive can lead us to reduce on sample size
+- Or use people who are convenient to experiment on rather than representative of everyone (e.g. students)
+- People may act differently if they know they're in an experiment
+- An artificial intervention may not be the same as the natural thing
+- People might act due to treatment *assignment* (placebo effect)
+
+## Problems with Experiments
+
+- This is not to say that experiments are bad by any means
+- But there are reasons we can't solve every problem with experiments
+- So if we still want to study causal effects, we may be in a situation where an experiment is infeasible, or may be outclassed by a *natural* experiment...
+
+
+## Natural Experiments
+
+- A *natural experiment* can take many forms, but the basic idea is that something experiment-like occurs without the researcher's control
+- In other words, *there is a form of exogenous variation in the wild*
+- (or at least conditionally exogenous)
+- And we can use that exogenous variation to identify our effect of interest
+
+## Natural Experiments
+
+- Let's take a classic example of the Vietnam lottery draft (Angrist and Krueger 1992)
+- During the Vietnam war, men were drafted into the US military based on their birthdates. The birthdates of the year were put into random order, and men were drafted in that order
+- Basically, randomly assigning you to military service!
+- Being assigned to the draft early gave you extra reason to go to college so you could avoid it - they wanted to know how college affected your earnings
+
+## Natural Experiments
+
+- Even though the researcher has no control over this process (and would likely do it a little differently if they could)...
+- If we *isolate just the part of military service that is driven by this exogenous variation*...
+- Then *that variation in military service is, also, exogenous*
+- Just like in an experiment we only use data from people in the experiment
+
+## Isolating Variation
+
+- It's sort of like the opposite of controlling: Instead of removing the variation associated with a variable, we remove all variation *not* associated with it
+- This is a way that we can mimic an actual controlled experiment using only observational data
+- In many cases this is more plausible than controlling for enough stuff because we have ideally *moved the assumptions we need to make to an easier variable*
+
+## Moving the Assumptions
+
+- In effect, this *moves our assumptions* from one variable to another
+- To identify the effect of treatment by controlling for stuff, we must identify all back doors between $Treatment$ and $Outcome$ and close them
+- Now, instead, we must identify all back doors between $ExogenousVariation$ and $Outcome$ (or front doors that don't pass through $Treatment$) and close all of *them*
+
+## Moving the Assumptions
+
+- The same assumptions need to apply! But hopefully those assumptions are *more plausible* for our source of exogenous variation than our treatment
+- There are a BUNCH of back doors having to do with college attendance. It would be really hard to close them all
+- But, while we can imagine some stories as to how birthdate might have back doors, they're likely more limited, and maybe we can believe we can actually control for all of them
+- (like I said, sometimes exogeneity only holds conditionally - we may need to control for something! Perhaps richer people are more likely to have kids on certain days, so we'd want to control for parental income)
+
+## Treatment Effects
+
+- For any given treatment, there are likely to be *many* treatment effects
+- Different individuals will respond to different degrees (or even directions!)
+- This is called *heterogeneous treatment effects*
+
+## Treatment Effects
+
+- When we identify a treatment effect, what we're *estimating* is some mixture of all those individual treatment effects
+- But what kind of mixture? Is it an average of all of them? An average of some of them? A weighted average? Not an average at all?
+- What we get depends on *the research design itself* as well as *the estimator we use to perform that design*
+
+## Individual Treatment Effects
+
+- While we can't always estimate it directly, the true regression model becomes something like
+
+$$ Y = \beta_0 + \beta_iX + \varepsilon $$
+
+- $\beta_i$ follows its own distribution across individuals
+- (and remember, this is theoretical - we'd still have those individual $\beta_i$s even with one observation per individual and no way to estimate them separately)
+
+## Summarizing Effects
+
+- There are methods that try to give us the whole distribution of effects (and we'll talk about some of them next time)
+- But often we only get a single effect, $\hat{\beta}_1$.
+- This $\hat{\beta}_1$ is some summary statistic of the $\beta_i$ distribution. But *what* summary statistic?
+
+## Summarizing Effects
+
+- Average treatment effect: the mean of $\beta_i$
+- Conditional average treatment effect (CATE): the mean of $\beta_i$ *conditional on some value* (say, "just for men", i.e. conditional on being a man)
+- Weighted average treatment effect (WTE): the weighted mean of $\beta_i$, with weights $w_i$
+
+The latter two come in *many* flavors
+
+## Common Conditional Average Treatment Effects
+
+- The ATE among some demographic group
+- The ATE among some specific group (conditional average treatment effect)
+- The ATE just among people who were actually treated (ATT)
+- The ATE just among people who were NOT actually treated (ATUT)
+
+## Comon Weighted Average Treatment Effects
+
+- The ATE weighted by how responsive you are to an instrument/treatment assignment (local average treatment effect)
+- The ATE weighted by how much variation in treatment you have after all back doors are closed (variance-weighted)
+- The ATE weighted by how commonly-represented your mix of control variables is (distribution-weighted)
+
+## Are They Good?
+
+- Which average you'd *want* depends on what you'd want to do with it
+- Want to know how effective a treatment *was* when it was applied? Average Treatment on Treated
+- Want to know how effective a treatment would be if applied to everyone/at random? Average Treatment Effect
+- Want to know how effective a treatment would be if applied *just a little more broadly?* **Marginal Treatment  Effect** (literally, the effect for the next person who would be treated), or, sometimes, Local Average Treatment Effect
+
+## Are They Good?
+
+- Different treatment effect averages aren't *wrong* but we need to pay attention to which one we're getting, or else we may apply the result incorrectly
+- We don't want that!
+- A result could end up representing a different group than you're really interested in
+- There are technical ways of figuring out what average you get, and also intuitive ways
