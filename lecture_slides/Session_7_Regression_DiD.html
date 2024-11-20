@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Session_7_Regression_DiD.knit</title>
+  <style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+              </style>
+  <script src="Session_7_Regression_DiD_files/header-attrs-2.28/header-attrs.js"></script>
+  <link href="Session_7_Regression_DiD_files/slidy-2/styles/slidy.css" rel="stylesheet" />
+  <script src="Session_7_Regression_DiD_files/slidy-2/scripts/slidy.js"></script>
+  <script src="Session_7_Regression_DiD_files/slidy_shiny-1/slidy_shiny.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="template.css" />
+</head>
+<body>
+<div id="section" class="slide section level2">
+<h1></h1>
+<div class="header-container first-slide-header">
+<img src="logo.jpg" class="logo" alt="University Logo">
+<img src="uibk_header1.png" class="header-image" alt="University Header">
+<h1>
+Lecture : Difference-in-Differences
+</h1>
+</div>
+</div>
+<div id="today" class="slide section level2">
+<h1>Today</h1>
+<ul>
+<li>Today we’re going to look at one of the most commonly used methods
+in causal inference, called <em>Difference-in-Differences</em>.</li>
+<li>Before we get there, let’s look at something simpler. The
+<em>Difference Estimator</em>.</li>
+</ul>
+</div>
+<div id="difference-estimator" class="slide section level2">
+<h1>Difference Estimator</h1>
+<ul>
+<li>Sometimes, we observe people before and after a program.</li>
+<li>A possible estimator of the impact of treatment is the change in the
+outcome variable over time and is called the <em>Before-After
+estimator</em> or the <em>Difference estimator</em>.</li>
+<li>This is a widely popular estimator, not only among <em>professional
+program evaluators</em>.</li>
+</ul>
+<p><img src="figures/Soeder_tweet.png" style="width:60.0%" /></p>
+</div>
+<div id="the-basic-problem" class="slide section level2">
+<h1>The Basic Problem</h1>
+<ul>
+<li>The relationship between time and treatment is very clear: early =
+no treatment. Late = treatment</li>
+<li><em>If anything else is changing over time, we have a back
+door!</em></li>
+<li>We assume that without the treatment, the outcome would be
+constant.</li>
+</ul>
+<p><img src="Session_7_Regression_DiD_files/figure-slidy/unnamed-chunk-1-1.png" width="672" /></p>
+</div>
+<div id="the-basic-problem-1" class="slide section level2">
+<h1>The Basic Problem</h1>
+<ul>
+<li>Ok, time is a back door, no problem. We can observe and measure
+time. So we’ll just control for it and close the back door!
+<ul>
+<li>But we can’t!</li>
+</ul></li>
+<li>Why not?
+<ul>
+<li>Because in this group, you’re either before treatment and
+<code>T = 0</code>, or after treatment and <code>T = 1</code>. If we
+control for time, we’re effectively controlling for treatment</li>
+</ul></li>
+<li>“What’s the effect of treatment, controlling for treatment” doesn’t
+make any sense</li>
+</ul>
+</div>
+<div id="a-solution-to-this-problem-has-been-developed-by"
+class="slide section level2">
+<h1>A solution to this problem has been developed by…</h1>
+<p><img src="figures/jon_snow.jpg" style="width:68.0%" /></p>
+<p>Snow, John (1855), <em>On the Mode of Communication of Cholera</em>,
+2nd ed., London: John Churchill.</p>
+</div>
+<div id="john-snow-and-the-causes-of-cholera"
+class="slide section level2">
+<h1>John Snow and the causes of Cholera</h1>
+<ul>
+<li>Early 19th century: widely believed cause was miasma</li>
+<li>John Snow believed that transmission was waterborne</li>
+<li>Studied outbreak in a neighborhood of London</li>
+<li>Water supplied to households by two competing private companies:
+<ul>
+<li>Lambeth</li>
+<li>Southwark &amp; Vauxhall</li>
+</ul></li>
+<li>Until 1852, both companies drew their water from the Thames river
+downstream, which was contaminated with sewage flow from London.</li>
+<li>Since 1852, Lambeth moved its water source to an area relatively
+free from sewage.</li>
+</ul>
+</div>
+<div id="john-snow-and-the-causes-of-cholera-1"
+class="slide section level2">
+<h1>John Snow and the causes of Cholera</h1>
+<p>Death rates per 10,000 people by water company:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Company</th>
+<th>1849</th>
+<th>1853/54</th>
+<th>Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lambeth</td>
+<td>150</td>
+<td>10</td>
+<td>-140</td>
+</tr>
+<tr class="even">
+<td>Southwark &amp; Vauxhall</td>
+<td>125</td>
+<td>150</td>
+<td>25</td>
+</tr>
+<tr class="odd">
+<td><em>Difference</em>.</td>
+<td>25</td>
+<td>-140</td>
+<td><em>-165</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Simplest case of a DiD estimator:</strong></p>
+<ul>
+<li>Binary treatment</li>
+<li>Two time periods:
+<ul>
+<li>Treatment only occurs in the second period.</li>
+</ul></li>
+<li>Two groups:
+<ul>
+<li>Only individuals from one group are treated.</li>
+</ul></li>
+</ul>
+</div>
+<div id="idea-of-did" class="slide section level2">
+<h1>Idea of DiD</h1>
+<ul>
+<li>Obtain an estimate of how the outcome would have changed for treated
+units in the absence of the treatment. This is a missing counterfactual
+trend.</li>
+<li>An estimate of this missing counterfactual trend could be the actual
+trend for some untreated group over this same time period.</li>
+<li>The differences-in-differences (DiD) estimator is:</li>
+</ul>
+<p><span class="math display">\[
+\tau_{DiD} = [E(Y | Group=1, Time=1) - E(Y | Group=1, Time=0)]
+\]</span> <span class="math display">\[
+- [E(Y | Group=0, Time=1) - E(Y | Group=0, Time=0)]
+\]</span></p>
+</div>
+<div id="idea-of-did-1" class="slide section level2">
+<h1>Idea of DiD</h1>
+<ul>
+<li>The basic idea is to <em>compare the changes over time across
+groups</em></li>
+<li>We have a treated group that we observe <em>both before and after
+they’re treated</em></li>
+<li>And we have an untreated group</li>
+<li>The treated and control groups probably aren’t identical - there are
+back doors! So… we <em>control for group</em> like with group fixed
+effects or taking differences</li>
+</ul>
+</div>
+<div id="idea-of-did-2" class="slide section level2">
+<h1>Idea of DiD</h1>
+<ul>
+<li>What kind of setup lends itself to being studied with
+difference-in-differences?</li>
+<li>Crucially, we need to have a group (or groups) that receives a
+treatment and a control group that does not
+<ul>
+<li>Age ≤ 50</li>
+<li>Residence in a certain state</li>
+<li>All products containing meat</li>
+</ul></li>
+<li>And, we need to observe them both <em>before</em> and <em>after</em>
+they get their treatment</li>
+<li>Observing each individual (or group) multiple times</li>
+</ul>
+</div>
+<div id="parametric-estimation" class="slide section level2">
+<h1>Parametric estimation</h1>
+<p><span class="math display">\[
+Y_i = \alpha_0 + \alpha_1 G_i + \alpha_2 T_i + \theta G_iT_i +
+\left(\sum_{j=1}^k \beta_j X_{jt}\right) + U_i
+\]</span></p>
+<ul>
+<li>We control for group <em>G</em> and and time <em>T</em>.</li>
+<li>The coefficient on the interaction between <em>G</em> and <em>T</em>
+gives us the differential trend between treatment and control
+group.</li>
+</ul>
+<p>Thus, <span class="math inline">\(\theta\)</span> identifies the
+effect of interest.</p>
+</div>
+<div id="causal-graph-for-did" class="slide section level2">
+<h1>Causal graph for DiD</h1>
+<p><img src="Session_7_Regression_DiD_files/figure-slidy/unnamed-chunk-2-1.png" width="576" /></p>
+</div>
+<div id="identification-with-did" class="slide section level2">
+<h1>Identification with DiD</h1>
+<p><img src="figures/DD_Grafik.png" style="width:80.0%" /></p>
+</div>
+<div id="excercise" class="slide section level2">
+<h1>Excercise</h1>
+<p>Mark the following points in the previous figure</p>
+<p><span class="math display">\[
+\begin{aligned}
+A &amp;= \alpha_0 + \alpha_1 + \alpha_2 + \theta \\
+B &amp;= \alpha_0 + \alpha_1 + \alpha_2 \\
+C &amp;= \alpha_0 + \alpha_2 \\
+D &amp;= \alpha_0 + \alpha_1 \\
+E &amp;= \alpha_0
+\end{aligned}
+\]</span></p>
+<ul>
+<li><em>Hint:</em> Start with point <em>E</em>.</li>
+<li>Also consider how these points relate to the conditional
+expectations on slide 9.</li>
+</ul>
+</div>
+<div id="another-graphical-representation" class="slide section level2">
+<h1>Another graphical representation</h1>
+<p><img src="Session_7_Regression_DiD_files/figure-slidy/unnamed-chunk-3-1.gif" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="difference-in-differences" class="slide section level2">
+<h1>Difference-in-Differences</h1>
+<ul>
+<li>It’s important in cases like this (and in all cases!) to think hard
+about whether we believe our causal diagram, and what that entails</li>
+<li>Which, remember, is this:</li>
+</ul>
+<p><img src="Session_7_Regression_DiD_files/figure-slidy/unnamed-chunk-4-1.png" width="576" /></p>
+</div>
+<div id="identification-with-did-common-trend-assumption"
+class="slide section level2">
+<h1>Identification with DiD: Common Trend Assumption</h1>
+<ul>
+<li>The key identifying assumption of the DiD estimator is that the
+observed trend of the comparison group is the same as the counterfactual
+trend of the treated group.
+<ul>
+<li>i.e. if the treatment had not occurred, the gap between treatment
+and control would have stayed the same after treatment as it was before
+treatment</li>
+</ul></li>
+<li>How do we know this is true?
+<ul>
+<li>We don’t! It’s one of these untestable assumptions. We have to
+select a control group where we can plausibly <em>assume</em> that the
+trends are identical.</li>
+<li>An indirect test is to look whether treatment and control group
+followed parallel trends in the periods before the treatment.</li>
+</ul></li>
+</ul>
+</div>
+<div id="identification-with-did-no-anticipation-effects"
+class="slide section level2">
+<h1>Identification with DiD: No Anticipation Effects</h1>
+<ul>
+<li><p>This assumption is specific to DiD and a bit hard to
+see.</p></li>
+<li><p>Assume we are interested in evaluating the effect of a VAT raise
+for certain goods on the demand for these goods.</p></li>
+<li><p>Demand for these goods might increase in the pre-treatment period
+if people buy ahead.</p></li>
+<li><p>For DiD studies, it is important to consider whether the
+<em>announcement</em> of a policy could have had an effect.</p></li>
+</ul>
+</div>
+<div id="some-practical-considerations-for-did-i"
+class="slide section level2">
+<h1>Some practical considerations for DiD I</h1>
+<ul>
+<li><strong>Institutional setting</strong>: Be clear about the policy
+change (policy changes often come in bundles).</li>
+<li><strong>Endogenous policy</strong>: Maybe groups have lobbied for a
+policy in expectation of certain trends in outcomes.</li>
+<li><strong>Spillovers</strong>: Choose a control group that reasonably
+follows parallel trends but that is not affected by the treatment in any
+way.</li>
+<li><strong>Timing</strong>: Announcement might have an effect even
+before the policy is officially in place (anticipation effect).</li>
+</ul>
+</div>
+<div id="some-practical-considerations-for-did-ii"
+class="slide section level2">
+<h1>Some practical considerations for DiD II</h1>
+<ul>
+<li>Discuss parallel trend assumptions: Show pre-treatment trends.</li>
+<li>Compositional effects: Can the treatment change the composition of
+the treated group, i.e., by encouraging people to move in or out of a
+treated area?</li>
+<li>Try a flexible DiD specification that allows you to trace out the
+full adjustment path.</li>
+<li>Estimating standard errors in DiD settings is often difficult. Most
+common strategy is to cluster standard errors at the group level. See
+also Section 8.2.2 in <em>Angrist and Pischke (2009)</em>.</li>
+</ul>
+</div>
+<div
+id="application-extending-unemployment-benefits-and-early-retirement"
+class="slide section level2">
+<h1>Application: Extending unemployment benefits and early
+retirement</h1>
+<ul>
+<li><em>Inderbitzin, Staubli, and Zweimueller (2016)</em> study the
+causal impact of extended UI benefits on:
+<ul>
+<li>The incidence of early retirement.</li>
+<li>The particular pathways through which workers exit the labor
+market.</li>
+</ul></li>
+<li>In Austria, in the late 1980s and early 1990s, workers aged 50+ were
+eligible for one year of regular UI benefits. Workers aged 55+ had
+relaxed access to DI benefits.</li>
+<li>For empirical identification, they exploit the regional extended
+benefits program (REBP) that changed early retirement incentives
+dramatically.</li>
+<li>The program was in place between June 1988 and July 1993 and granted
+UI benefits for up to 4 years to workers aged 50+ living in certain
+regions of the country.</li>
+</ul>
+</div>
+<div id="regional-distribution-of-program-eligibility"
+class="slide section level2">
+<h1>Regional distribution of program eligibility</h1>
+<p><img src="figures/Inderbitzin_2016_Fig1.png"
+style="width:90.0%" /></p>
+</div>
+<div
+id="early-retirement-pathways-for-unem--ployed-men-withwithout-rebp-eligibility"
+class="slide section level2">
+<h1>Early Retirement pathways for unem- ployed men with/without REBP
+eligibility</h1>
+<p><img src="figures/Inderbitzin_2016_Fig2.png"
+style="width:90.0%" /></p>
+<p><font size="3"><strong>Notes:</strong> Gray arrows denote maximum
+duration of regular UI benefits without REBP (1 year), and black arrows
+denote maximum duration of regular UI benefits with REBP (4 years).
+Unemployed men can retire early with DI at age 54 without the REBP and
+age 51 with the REBP by claiming regular UI benefits followed by a DI
+pension at age 55 (early retirement with DI). Unemployed men can retire
+early without DI at age 58 without the REBP and age 55 with the REBP by
+claiming regular UI benefits followed by special income support at age
+59 and an old-age pension at age 60 (early retirement without DI).
+</font></p>
+</div>
+<div id="transitions-into-early-retirement"
+class="slide section level2">
+<h1>Transitions into early retirement</h1>
+<p><img src="figures/Inderbitzin_2016_Fig3a.png"
+style="width:90.0%" /></p>
+</div>
+<div
+id="trends-in-transitions-into-early-retirement-with-and-without-di"
+class="slide section level2">
+<h1>Trends in transitions into early retirement with and without DI</h1>
+<p><img src="figures/Inderbitzin_2016_Fig4a.png"
+style="width:66.0%" /></p>
+<p><img src="figures/Inderbitzin_2016_Fig4b.png"
+style="width:66.0%" /></p>
+</div>
+<div id="did-regression-estimates" class="slide section level2">
+<h1>DiD regression estimates</h1>
+<p><img src="figures/Inderbitzin_2016_Tab3.png"
+style="width:80.0%" /></p>
+</div>
+<div class="footer">
+  <div class="footer-left">
+    <img src="logo.jpg" class="footer-logo-image">
+  </div>
+  <div class="footer-center">
+   Andreas Steinmayr
+  </div>
+  <div class="footer-right">
+    <span class="course-number">404050 Impact Evaluation </span>
+  </div>
+</div>
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+</body>
+</html>
