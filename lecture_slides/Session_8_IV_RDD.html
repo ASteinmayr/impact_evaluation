@@ -1,0 +1,1016 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Session_8_IV_RDD.knit</title>
+  <style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+            pre > code.sourceCode { white-space: pre; position: relative; }
+            pre > code.sourceCode > span { line-height: 1.25; }
+            pre > code.sourceCode > span:empty { height: 1.2em; }
+            .sourceCode { overflow: visible; }
+            code.sourceCode > span { color: inherit; text-decoration: inherit; }
+            div.sourceCode { margin: 1em 0; }
+            pre.sourceCode { margin: 0; }
+            @media screen {
+            div.sourceCode { overflow: auto; }
+            }
+            @media print {
+            pre > code.sourceCode { white-space: pre-wrap; }
+            pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+            }
+            pre.numberSource code
+              { counter-reset: source-line 0; }
+            pre.numberSource code > span
+              { position: relative; left: -4em; counter-increment: source-line; }
+            pre.numberSource code > span > a:first-child::before
+              { content: counter(source-line);
+                position: relative; left: -1em; text-align: right; vertical-align: baseline;
+                border: none; display: inline-block;
+                -webkit-touch-callout: none; -webkit-user-select: none;
+                -khtml-user-select: none; -moz-user-select: none;
+                -ms-user-select: none; user-select: none;
+                padding: 0 4px; width: 4em;
+                color: #aaaaaa;
+              }
+            pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+            div.sourceCode
+              {   }
+            @media screen {
+            pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+            }
+            code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+            code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+            code span.at { color: #7d9029; } /* Attribute */
+            code span.bn { color: #40a070; } /* BaseN */
+            code span.bu { color: #008000; } /* BuiltIn */
+            code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+            code span.ch { color: #4070a0; } /* Char */
+            code span.cn { color: #880000; } /* Constant */
+            code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+            code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+            code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+            code span.dt { color: #902000; } /* DataType */
+            code span.dv { color: #40a070; } /* DecVal */
+            code span.er { color: #ff0000; font-weight: bold; } /* Error */
+            code span.ex { } /* Extension */
+            code span.fl { color: #40a070; } /* Float */
+            code span.fu { color: #06287e; } /* Function */
+            code span.im { color: #008000; font-weight: bold; } /* Import */
+            code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+            code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+            code span.op { color: #666666; } /* Operator */
+            code span.ot { color: #007020; } /* Other */
+            code span.pp { color: #bc7a00; } /* Preprocessor */
+            code span.sc { color: #4070a0; } /* SpecialChar */
+            code span.ss { color: #bb6688; } /* SpecialString */
+            code span.st { color: #4070a0; } /* String */
+            code span.va { color: #19177c; } /* Variable */
+            code span.vs { color: #4070a0; } /* VerbatimString */
+            code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+          </style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <script src="Session_8_IV_RDD_files/header-attrs-2.28/header-attrs.js"></script>
+  <link href="Session_8_IV_RDD_files/slidy-2/styles/slidy.css" rel="stylesheet" />
+  <script src="Session_8_IV_RDD_files/slidy-2/scripts/slidy.js"></script>
+  <script src="Session_8_IV_RDD_files/slidy_shiny-1/slidy_shiny.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="template.css" />
+</head>
+<body>
+<div id="section" class="slide section level2">
+<h1></h1>
+<div class="header-container first-slide-header">
+<img src="logo.jpg" class="logo" alt="University Logo">
+<img src="uibk_header1.png" class="header-image" alt="University Header">
+<h1>
+Lecture 8: Instrumental variables and RDD
+</h1>
+</div>
+</div>
+<div id="recap" class="slide section level2">
+<h1>Recap</h1>
+<ul>
+<li>We’ve covered several methods for isolating causal effects!</li>
+<li>Controlling for variables to close back doors (explain X and Y with
+the control, remove what’s explained)</li>
+<li>Matching on variables to close back doors (find treated and
+non-treated observations with identical values of controls)</li>
+<li>Using a control group to control for time (before/after difference
+for treated and untreated, then difference them)</li>
+</ul>
+</div>
+<div id="today" class="slide section level2">
+<h1>Today</h1>
+<ul>
+<li>We’ve got TWO MORE METHODs to go deep on!</li>
+<li>First, we’ll be covering <em>instrumental variables</em>
+<ul>
+<li>The basic idea is that we have some variable - the instrumental
+variable - that causes <code>X</code> but has no other open back
+doors!</li>
+</ul></li>
+<li>Second, we’ll cover <em>regression discontinuity designs</em>
+<ul>
+<li>Here the basic idea is to compare groups close to a discontinuity in
+a running variable (e.g. test score) that affects treatment
+assignment</li>
+</ul></li>
+</ul>
+</div>
+<div id="natural-experiments" class="slide section level2">
+<h1>Natural Experiments</h1>
+<ul>
+<li>This calls back to our idea of trying to mimic an experiment without
+having an experiment. In fact, let’s think about an actual randomized
+experiment.</li>
+<li>We have some random assignment <code>R</code> that determines your
+<code>X</code>. So even though we have back doors between <code>X</code>
+and <code>Y</code>, we can identify <code>X -&gt; Y</code></li>
+</ul>
+<p><img src="Session_8_IV_RDD_files/figure-slidy/unnamed-chunk-1-1.png" width="576" /></p>
+</div>
+<div id="natural-experiments-1" class="slide section level2">
+<h1>Natural Experiments</h1>
+<ul>
+<li>The idea of instrumental variables is this:</li>
+<li>What if we can find a variable that can take the place of R in the
+diagram despite not actually being something we randomized in an
+experiment?</li>
+<li>If we can do that, we’ve clearly got a “natural experiment”</li>
+<li>When we find a variable that can do that, we call it an “instrument”
+or “instrumental variable”</li>
+<li>Let’s call it <code>Z</code></li>
+</ul>
+</div>
+<div id="instrumental-variable" class="slide section level2">
+<h1>Instrumental Variable</h1>
+<p>So, for <code>Z</code> take the place of <code>R</code> in the
+diagram, what do we need?</p>
+<ul>
+<li><code>Z</code> must be related to <code>X</code> (typically
+<code>Z -&gt; X</code> but not always)</li>
+<li>There must be <em>no open paths</em> from <code>Z</code> to
+<code>Y</code> <em>except for ones that go through
+<code>X</code></em></li>
+</ul>
+<p>In other words “<code>Z</code> is related to <code>X</code>, and all
+the effect of <code>Z</code> on <code>Y</code> goes THROUGH
+<code>X</code>”</p>
+<ul>
+<li>This implies no backdoors between <code>Z</code> and <code>Y</code>
+(unconfounded instrument)</li>
+<li>and no alternative frontdoors (exclusion restriction)</li>
+</ul>
+</div>
+<div id="instrumental-variable-1" class="slide section level2">
+<h1>Instrumental Variable</h1>
+<ul>
+<li>This doesn’t relieve us of the duty of identifying a causal effect
+by closing back doors</li>
+<li>But it <em>moves</em> that duty from the endogenous variable to the
+instrument, which potentially is easier to identify</li>
+<li>(and then adds on the additional requirement that there are also no
+open <em>front</em> doors from <span class="math inline">\(Z\)</span> to
+<span class="math inline">\(Y\)</span> except through <span
+class="math inline">\(X\)</span> )</li>
+</ul>
+</div>
+<div id="instrumental-variable-2" class="slide section level2">
+<h1>Instrumental Variable</h1>
+<p>How?</p>
+<ul>
+<li>Explain <code>X</code> with <code>Z</code>, and keep only what
+<em>is</em> explained, <code>X'</code></li>
+<li>Explain <code>Y</code> with <code>Z</code>, and keep only what
+<em>is</em> explained, <code>Y'</code></li>
+<li>[If <code>Z</code> is logical/binary] Divide the difference in
+<code>Y'</code> between <code>Z</code> values by the difference in
+<code>X'</code> between <code>Z</code> values</li>
+<li>[If <code>Z</code> is not logical/binary] Get the correlation
+between <code>X'</code> and <code>Y'</code></li>
+</ul>
+</div>
+<div id="estimation" class="slide section level2">
+<h1>Estimation</h1>
+<ul>
+<li>We will be doing this mostly by hand today (until the end part) but
+most commonly this is estimated using <em>two stage least
+squares</em></li>
+<li>We basically just do what we described on the last slide:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Use the instruments and controls to explain <span
+class="math inline">\(X\)</span> in the first stage</li>
+<li>Use the controls and the predicted (explained) part of <span
+class="math inline">\(X\)</span> in place of <span
+class="math inline">\(X\)</span> in the second stage</li>
+<li>(do some standard error adjustments)</li>
+</ol>
+<p>Many ways to do this in R, we’ll be doing 2SLS with
+<code>feols()</code> from <strong>fixest</strong></p>
+</div>
+<div id="graphically" class="slide section level2">
+<h1>Graphically</h1>
+<p> </p>
+<p> </p>
+<p><img
+src="Session_8_IV_RDD_files/figure-slidy/unnamed-chunk-2-1.gif" /><!-- --></p>
+</div>
+<div id="instrumental-variables" class="slide section level2">
+<h1>Instrumental Variables</h1>
+<ul>
+<li>Notice that this whole process is like the <em>opposite</em> of
+controlling for a variable</li>
+<li>We explain <code>X</code> and <code>Y</code> with the variable, but
+instead of tossing out what’s explained, we ONLY KEEP what’s
+explained!</li>
+<li>Instead of saying “you’re on a back door, I want to close you” we
+say “you have no back doors! I want my <code>X</code> to be just like
+you! I’m only keeping that part of <code>X</code> that’s explained by
+you!”</li>
+<li>Since <code>Z</code> has no back doors, the part of <code>X</code>
+explained by <code>Z</code> has no back doors to the part of
+<code>Y</code> explained by <code>Z</code></li>
+</ul>
+</div>
+<div id="imperfect-assignment" class="slide section level2">
+<h1>Imperfect Assignment</h1>
+<ul>
+<li>Let’s apply one of the common uses of instrumental variables, which
+actually <em>is</em> when you have a randomized experiment</li>
+<li>In normal circumstances, if we have an experiment and assign people
+with <code>R</code>, we just compare <code>Y</code> across values of
+<code>R</code>:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">R =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dv">5000</span>,<span class="at">replace=</span>T)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">X =</span> R, <span class="at">Y =</span> <span class="dv">5</span><span class="sc">*</span>X <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">5000</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="co">#The truth is a difference of 5</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(R) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Y=</span><span class="fu">mean</span>(Y))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##       R       Y
+##   &lt;dbl&gt;   &lt;dbl&gt;
+## 1     0 0.00398
+## 2     1 5.01</code></pre>
+</div>
+<div id="imperfect-assignment-1" class="slide section level2">
+<h1>Imperfect Assignment</h1>
+<ul>
+<li>But what happens if you run a randomized experiment and assign
+people with <code>R</code>, but not everyone does what you say? Some
+“treated” people don’t get the treatment, and some “untreated” people
+might get it</li>
+<li>When this happens, we can’t just compare <code>Y</code> across
+<code>R</code></li>
+<li>But <code>R</code> is still a valid instrument!</li>
+</ul>
+</div>
+<div id="imperfect-assignment-2" class="slide section level2">
+<h1>Imperfect Assignment</h1>
+<p>In a setting with a binary instrument and a binary treatment, we can
+distinguish between four types:</p>
+<ul>
+<li><strong>Always takers</strong>: take the treatment irrespective of
+the value of the instrument</li>
+<li><strong>Compliers</strong>: take the treatment if R=1 and don’t take
+the treatment if R=0</li>
+<li><strong>Never takers</strong>: do not take the treatment
+irrespective of the value of the instrument</li>
+<li><strong>Defiers</strong>: take the treatment if R=0 and don’t take
+the treatment if R=1</li>
+</ul>
+</div>
+<div id="imperfect-assignment-3" class="slide section level2">
+<h1>Imperfect Assignment</h1>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">R =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dv">5000</span>,<span class="at">replace=</span>T)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="co">#We tell them whether or not to get treated</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">X =</span> R) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  <span class="co">#But some of them don&#39;t listen! 50% never take the treatment</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">X =</span> <span class="fu">ifelse</span>(<span class="fu">runif</span>(<span class="dv">5000</span>) <span class="sc">&gt;</span> .<span class="dv">5</span>,<span class="dv">0</span>,R)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Y =</span> <span class="dv">5</span><span class="sc">*</span>X <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">5000</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#The truth is a difference of 5</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(R) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Y=</span><span class="fu">mean</span>(Y))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##       R       Y
+##   &lt;dbl&gt;   &lt;dbl&gt;
+## 1     0 0.00870
+## 2     1 2.61</code></pre>
+<p><em>Exercise</em>: Change the code to create always takers and
+defiers.</p>
+</div>
+<div id="imperfect-assignment-4" class="slide section level2">
+<h1>Imperfect Assignment</h1>
+<ul>
+<li>So let’s do IV (instrumental variables); <code>R</code> is the
+IV.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>iv <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(R) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Y =</span> <span class="fu">mean</span>(Y), <span class="at">X =</span> <span class="fu">mean</span>(X))</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>iv</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 3
+##       R       Y     X
+##   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1     0 0.00870 0    
+## 2     1 2.61    0.519</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co">#Remember, since our instrument is binary, we want the difference in the means</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>(iv<span class="sc">$</span>Y[<span class="dv">2</span>] <span class="sc">-</span> iv<span class="sc">$</span>Y[<span class="dv">1</span>])<span class="sc">/</span>(iv<span class="sc">$</span>X[<span class="dv">2</span>]<span class="sc">-</span>iv<span class="sc">$</span>X[<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## [1] 5.011207</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co">#Truth is 5!</span></span></code></pre></div>
+</div>
+<div id="perform-iv-estimation-using-two-state-least-squares"
+class="slide section level2">
+<h1>Perform IV estimation using two-state least squares</h1>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># First Stage: Predicting X using R</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>first_stage <span class="ot">&lt;-</span> <span class="fu">lm</span>(X <span class="sc">~</span> R, <span class="at">data =</span> df)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co"># Add predicted values to the dataset</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">X_hat =</span> <span class="fu">predict</span>(first_stage, df))</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co"># Second Stage: Regressing Y on predicted X_hat</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>second_stage <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X_hat, <span class="at">data =</span> df, <span class="at">se=</span><span class="st">&#39;hetero&#39;</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="co"># One-step using feols</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>iv_model <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> X <span class="sc">~</span> R, <span class="at">data =</span> df, <span class="at">se=</span><span class="st">&#39;hetero&#39;</span>)</span></code></pre></div>
+</div>
+<div id="perform-iv-estimation-using-two-state-least-squares-1"
+class="slide section level2">
+<h1>Perform IV estimation using two-state least squares</h1>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(first_stage, second_stage, iv_model), <span class="at">stars =</span> <span class="cn">FALSE</span>, <span class="at">gof_omit =</span> <span class="st">&#39;AIC|BIC|Lik|F|R2|RMSE&#39;</span>)</span></code></pre></div>
+<table style="width:86%;">
+<colgroup>
+<col width="19%" />
+<col width="13%" />
+<col width="13%" />
+<col width="38%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><ol style="list-style-type: decimal">
+<li></li>
+</ol></th>
+<th><ol start="2" style="list-style-type: decimal">
+<li></li>
+</ol></th>
+<th><ol start="3" style="list-style-type: decimal">
+<li></li>
+</ol></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Intercept)</td>
+<td>0.000</td>
+<td>0.009</td>
+<td>0.009</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(0.007)</td>
+<td>(0.041)</td>
+<td>(0.020)</td>
+</tr>
+<tr class="odd">
+<td>R</td>
+<td>0.519</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(0.010)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>X_hat</td>
+<td></td>
+<td>5.011</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>(0.112)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>fit_X</td>
+<td></td>
+<td></td>
+<td>5.011</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>(0.055)</td>
+</tr>
+<tr class="odd">
+<td>Num.Obs.</td>
+<td>5000</td>
+<td>5000</td>
+<td>5000</td>
+</tr>
+<tr class="even">
+<td>Std.Errors</td>
+<td></td>
+<td></td>
+<td>Heteroskedasticity-robust</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="another-example" class="slide section level2">
+<h1>Another Example</h1>
+<ul>
+<li>Justifying that an IV has no back doors can be hard!</li>
+<li>Usually things aren’t as clean-cut as having actual
+randomization</li>
+<li>And sometimes we may have to add controls in order to justify the
+IV</li>
+<li>Think hard - are there really no other paths from <code>Z</code> to
+<code>Y</code>?</li>
+<li>This will often require <em>detailed contextual knowledge</em> of
+the data generating process</li>
+</ul>
+</div>
+<div id="practice" class="slide section level2">
+<h1>Practice</h1>
+<ul>
+<li>Does the price of cigarettes affect smoking? Get AER package and
+data(CigarettesSW). Examine with help().</li>
+<li>Get JUST thecigarette taxes <code>cigtax</code> from
+<code>taxs-tax</code></li>
+<li>Draw a causal diagram using <code>packs</code>, <code>price</code>,
+<code>cigtax</code>, and some back door <code>W</code>. What might
+<code>W</code> be?</li>
+<li>Adjust <code>price</code> and <code>cigtax</code> for inflation:
+divide them by <code>cpi</code></li>
+<li>Explain <code>price</code> and <code>packs</code> with
+<code>cigtax</code> using <code>cut(,breaks=7)</code> for
+<code>cigtax</code></li>
+<li>Get correlation between the explained parts and plot the explained
+parts - does price reduce packs smoked?</li>
+</ul>
+</div>
+<div id="practice-answers" class="slide section level2">
+<h1>Practice Answers</h1>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">library</span>(AER)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">data</span>(CigarettesSW)</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>CigarettesSW <span class="ot">&lt;-</span> CigarettesSW <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cigtax =</span> taxs<span class="sc">-</span>tax) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">price =</span> price<span class="sc">/</span>cpi,</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>         <span class="at">cigtax =</span> cigtax<span class="sc">/</span>cpi) <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="fu">cut</span>(cigtax,<span class="at">breaks=</span><span class="dv">7</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">priceexp =</span> <span class="fu">mean</span>(price),</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>         <span class="at">packsexp =</span> <span class="fu">mean</span>(packs)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="fu">cor</span>(CigarettesSW<span class="sc">$</span>priceexp,CigarettesSW<span class="sc">$</span>packsexp)</span></code></pre></div>
+<pre><code>## [1] -0.9711096</code></pre>
+</div>
+<div id="practice-answers-plot" class="slide section level2">
+<h1>Practice Answers Plot</h1>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">plot</span>(CigarettesSW<span class="sc">$</span>priceexp,CigarettesSW<span class="sc">$</span>packsexp)</span></code></pre></div>
+<p><img src="Session_8_IV_RDD_files/figure-slidy/unnamed-chunk-9-1.png" width="576" /></p>
+</div>
+<div id="practice-diagram-answers" class="slide section level2">
+<h1>Practice Diagram Answers</h1>
+<p><img src="Session_8_IV_RDD_files/figure-slidy/unnamed-chunk-10-1.png" width="576" /></p>
+</div>
+<div id="practice---doing-it-with-regression"
+class="slide section level2">
+<h1>Practice - Doing it with Regression!</h1>
+<ul>
+<li>Common 2SLS estimators: <code>ivreg</code> in <strong>AER</strong>,
+<code>iv_robust</code> in <strong>estimatr</strong>, and
+<code>feols()</code> in <strong>fixest</strong>. We’ll use the latter
+since it’s fast easy to combine with fixed effects and all kinds of
+error adjustments</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y <span class="sc">~</span> controls <span class="sc">|</span> X <span class="sc">~</span> Z, <span class="at">data =</span> data)</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">feols</span>(Y <span class="sc">~</span> controls <span class="sc">|</span> fixed_effects <span class="sc">|</span> X <span class="sc">~</span> Z, <span class="at">data =</span> data, <span class="at">se =</span> <span class="st">&#39;hetero&#39;</span>)</span></code></pre></div>
+</div>
+<div id="practice---doing-it-with-regression-1"
+class="slide section level2">
+<h1>Practice - Doing it with Regression</h1>
+<ul>
+<li>Reload the cigarette data and skip the summarize step</li>
+<li>Run our cigarette analysis first doing 2SLS by hand - use
+<code>lm()</code> to run the first stage, then replace
+<code>price</code> with <code>predict(m)</code> in the second stage</li>
+<li>Then use <code>feols()</code> to do the same (use 1 to indicate no
+controls). Coefficients should be the same but the standard errors will
+be corrected in the <code>feols()</code> version!</li>
+<li>Show both results in <code>msummary()</code></li>
+</ul>
+</div>
+<div id="practice---doing-it-with-regression-2"
+class="slide section level2">
+<h1>Practice - Doing it with Regression</h1>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">data</span>(CigarettesSW)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>CigarettesSW <span class="ot">&lt;-</span> CigarettesSW <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cigtax =</span> taxs<span class="sc">-</span>tax) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">price =</span> price<span class="sc">/</span>cpi,</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>         <span class="at">cigtax =</span> cigtax<span class="sc">/</span>cpi)</span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>first_stage <span class="ot">&lt;-</span> <span class="fu">lm</span>(price<span class="sc">~</span>cigtax, <span class="at">data =</span> CigarettesSW)</span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>second_stage <span class="ot">&lt;-</span> <span class="fu">lm</span>(packs <span class="sc">~</span> <span class="fu">predict</span>(first_stage), <span class="at">data =</span> CigarettesSW)</span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a>package <span class="ot">&lt;-</span> <span class="fu">feols</span>(packs <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> price <span class="sc">~</span> cigtax, <span class="at">data =</span> CigarettesSW)</span></code></pre></div>
+</div>
+<div id="practice---doing-it-with-regression-3"
+class="slide section level2">
+<h1>Practice - Doing it with Regression</h1>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(second_stage, package), <span class="at">stars =</span> <span class="cn">TRUE</span>, <span class="at">gof_omit =</span> <span class="st">&#39;AIC|BIC|Lik|F|R2&#39;</span>)</span></code></pre></div>
+<table style="width:68%;">
+<colgroup>
+<col width="31%" />
+<col width="18%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><ol style="list-style-type: decimal">
+<li></li>
+</ol></th>
+<th><ol start="2" style="list-style-type: decimal">
+<li></li>
+</ol></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Intercept)</td>
+<td>219.576***</td>
+<td>219.576***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(20.863)</td>
+<td>(16.989)</td>
+</tr>
+<tr class="odd">
+<td>predict(first_stage)</td>
+<td>-1.019***</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(0.191)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>fit_price</td>
+<td></td>
+<td>-1.019***</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>(0.156)</td>
+</tr>
+<tr class="odd">
+<td>Num.Obs.</td>
+<td>96</td>
+<td>96</td>
+</tr>
+<tr class="even">
+<td>RMSE</td>
+<td>22.56</td>
+<td>18.37</td>
+</tr>
+<tr class="odd">
+<td>Std.Errors</td>
+<td></td>
+<td>IID</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td colspan="3"><ul>
+<li>p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</li>
+</ul></td>
+</tr>
+</tfoot>
+
+</table>
+</div>
+<div id="regression-discontinuity" class="slide section level2">
+<h1>Regression Discontinuity</h1>
+<ul>
+<li>For regression discontinuity to work, we need the Treatment to be
+assigned based on a <em>cutoff</em> of what’s called a “running
+variable”</li>
+<li>For example, imagine we want to know the effects of being in a
+Gifted and Talented (GATE) program on your adult earnings</li>
+<li>Being admitted to the program is based on your test score (running
+variable)</li>
+<li>If you score above 75, you’re in the program. 75 or below, you’re
+out!</li>
+</ul>
+</div>
+<div id="regression-discontinuity-1" class="slide section level2">
+<h1>Regression Discontinuity</h1>
+<ul>
+<li>Notice that the y-axis here is <em>In GATE</em>, not the
+outcome</li>
+</ul>
+<p><img src="Session_8_IV_RDD_files/figure-slidy/unnamed-chunk-14-1.png" width="672" /></p>
+<pre><code>## $x
+## [1] &quot;Test Score&quot;
+## 
+## $y
+## [1] &quot;In GATE&quot;
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;labels&quot;</code></pre>
+</div>
+<div id="regression-discontinuity-2" class="slide section level2">
+<h1>Regression Discontinuity</h1>
+<ul>
+<li>Here’s how it look when we look at the actual outcome</li>
+</ul>
+<p><img src="Session_8_IV_RDD_files/figure-slidy/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="regression-discontinuity-3" class="slide section level2">
+<h1>Regression Discontinuity</h1>
+<ul>
+<li>Now, we have a bit of a problem!</li>
+<li>If we look at the relationship between treatment and going to
+college, we’ll be picking up the fact that higher test scores make you
+more likely to go to college anyway</li>
+</ul>
+<p><img src="Session_8_IV_RDD_files/figure-slidy/unnamed-chunk-16-1.png" width="576" /></p>
+</div>
+<div id="regression-discontinuity-4" class="slide section level2">
+<h1>Regression Discontinuity</h1>
+<ul>
+<li>Except, that’s not actually what the diagram looks like! Test only
+affects GATE to the extent that it makes you be above the 90
+cutoff!</li>
+</ul>
+<p><img src="Session_8_IV_RDD_files/figure-slidy/unnamed-chunk-17-1.png" width="576" /></p>
+</div>
+<div id="regression-discontinuity-5" class="slide section level2">
+<h1>Regression Discontinuity</h1>
+<ul>
+<li>What can we do with that information?</li>
+<li>Well, imagine that we looked at the area <em>just around</em> the
+cutoff</li>
+<li>Say, the cutoff is 75, so we look at 73 to 77</li>
+<li><em>Within that group</em>, it’s basically random whether you fall
+on one side of the line or another</li>
+</ul>
+</div>
+<div id="regression-discontinuity-6" class="slide section level2">
+<h1>Regression Discontinuity</h1>
+<ul>
+<li>Someone with a 75 is, on average, almost exactly the same as someone
+with a 76, except that one got the treatment and the other didn’t!</li>
+<li>Heck, that tiny test score difference could be due to just having a
+bad day before the test</li>
+<li>So we have two groups - the just-barely-missed-outs and the
+just-barely-made-its, that are basically exactly the same except that
+one happened to get treatment</li>
+<li>A perfect description of what we’re looking for in a control
+group!</li>
+</ul>
+</div>
+<div id="regression-discontinuity-7" class="slide section level2">
+<h1>Regression Discontinuity</h1>
+<ul>
+<li>So we look directly around the cutoff, and compare just below to
+just above.</li>
+<li>This is our way of controlling for test score and closing the
+<code>GATE &lt;- Above &lt;- Test -&gt; earn</code> back door</li>
+<li>Why not just control for <code>Test</code> in the normal way?</li>
+<li>Because if we really think that, right around the cutoff, it’s
+random whether you’re on one side or the other, we don’t just close the
+<code>Test</code> back door, we have effectively random assignment, like
+an experiment!</li>
+<li>We’re not just closing the <code>Test</code> back door, we’re
+closing <em>all</em> back doors</li>
+</ul>
+</div>
+<div id="in-practice" class="slide section level2">
+<h1>In Practice</h1>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>rdd.data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">test =</span> <span class="fu">runif</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GATE =</span> test <span class="sc">&gt;=</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">earn =</span> <span class="fu">runif</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="dv">40</span><span class="sc">+</span><span class="dv">10</span><span class="sc">*</span>GATE<span class="sc">+</span>test<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co">#Choose a &quot;bandwidth&quot; of how wide around the cutoff to look (arbitrary in our example)</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co">#Bandwidth of 2 with a cutoff of 75 means we look from 75-2 to 75+2</span></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>bandwidth <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="co">#Just look within the bandwidth</span></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a>rdd <span class="ot">&lt;-</span> rdd.data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(<span class="dv">75</span><span class="sc">-</span>test) <span class="sc">&lt;</span> bandwidth) <span class="sc">%&gt;%</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a>  <span class="co">#Create a variable indicating we&#39;re above the cutoff</span></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">above =</span> test <span class="sc">&gt;=</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a>  <span class="co">#And compare our outcome just below the cutoff to just above</span></span>
+<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a>  <span class="fu">group_by</span>(above) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">earn =</span> <span class="fu">mean</span>(earn))</span>
+<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a>rdd</span>
+<span id="cb19-13"><a href="#cb19-13" tabindex="-1"></a><span class="co">#Our effect looks just about right (10 is the truth)</span></span>
+<span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a>rdd<span class="sc">$</span>earn[<span class="dv">2</span>] <span class="sc">-</span> rdd<span class="sc">$</span>earn[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   above  earn
+##   &lt;lgl&gt; &lt;dbl&gt;
+## 1 FALSE  55.2
+## 2 TRUE   66.0</code></pre>
+<pre><code>## [1] 10.80055</code></pre>
+</div>
+<div id="graphically-1" class="slide section level2">
+<h1>Graphically</h1>
+<p><img src="Session_8_IV_RDD_files/figure-slidy/unnamed-chunk-20-1.gif" width="50%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="example-corporate-social-responsibility"
+class="slide section level2">
+<h1>Example: Corporate Social Responsibility</h1>
+<ul>
+<li>Corporate Social Responsibility (CSR) is when corporations engage in
+the kind of behavior that nonprofits usually do - community outreach,
+charity, etc.</li>
+<li>Is this good for the corporation? Or would it make more sense to
+just send the money they spend to actual nonprofits if they just want to
+do good?</li>
+<li>This is a causal question</li>
+</ul>
+</div>
+<div id="example-corporate-social-responsibility-1"
+class="slide section level2">
+<h1>Example: Corporate Social Responsibility</h1>
+<ul>
+<li>Convenient for our purposes, CSR policies are voted on by
+shareholder boards</li>
+<li>If a board votes 49% in favor, it fails. 51% in favor? It
+passes!</li>
+<li>Sounds like a regression discontinuity to me!</li>
+<li>“Close votes” is a common application of regression
+discontinuity</li>
+</ul>
+</div>
+<div id="example-corporate-social-responsibility-2"
+class="slide section level2">
+<h1>Example: Corporate Social Responsibility</h1>
+<ul>
+<li>So how do CSR policy announcements affect stock prices?</li>
+</ul>
+<p><img src="Session_8_IV_RDD_files/figure-slidy/unnamed-chunk-21-1.png" width="576" /></p>
+</div>
+<div id="example-corporate-social-responsbility"
+class="slide section level2">
+<h1>Example: Corporate Social Responsbility</h1>
+<ul>
+<li>Caroline Flammer studies this topic</li>
+<li>Looking at the “abnormal return” (stock price return minus what’s
+expected given the market) comparing CSR votes that just won vs. CSR
+votes that just lost</li>
+<li>So what should we do?</li>
+<li>Focus just around the cutoff and compare abnormal returns just above
+and just below.</li>
+</ul>
+</div>
+<div id="example-corporate-social-responsibility-3"
+class="slide section level2">
+<h1>Example: Corporate Social Responsibility</h1>
+<div class="float">
+<img src="Lecture_12_Flammer.png"
+alt="Flammer (2015) Management Science" />
+<div class="figcaption">Flammer (2015) Management Science</div>
+</div>
+</div>
+<div id="example-corporate-social-responsibility-4"
+class="slide section level2">
+<h1>Example: Corporate Social Responsibility</h1>
+<ul>
+<li>Looks like stock returns increase by about .02, comparing CSRs that
+just lost to just won!</li>
+<li>Seems like the market likes seeing those CSRs and values them</li>
+<li>And all those things that we might expect to correlate with both
+stock price growth and CSRs - tech-savvy, youthful leadership, etc.,
+we’ve closed those back doors too!</li>
+</ul>
+</div>
+<div id="balance" class="slide section level2">
+<h1>Balance</h1>
+<ul>
+<li>Have we really closed those back doors?</li>
+<li>One thing that’s so great about RDD is that, since it’s basically
+random whether you’re on one side of the cutoff or another, there
+shouldn’t be other back doors</li>
+<li>It’s a form of within variation that’s <em>so narrow</em> it
+basically closes everything</li>
+<li>We can check this by seeing if other variables differ on either side
+of the line</li>
+<li>This is our way of testing our diagram - if our diagram is true,
+then <code>above</code> should have no relationship with any back door
+variable after focusing around the cutoff</li>
+</ul>
+</div>
+<div id="balance-1" class="slide section level2">
+<h1>Balance</h1>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>rdd.data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">test =</span> <span class="fu">runif</span>(<span class="dv">500</span>)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">backdoor=</span><span class="fu">rnorm</span>(<span class="dv">500</span>)<span class="sc">+</span>test<span class="sc">/</span><span class="dv">50</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">GATE =</span> test <span class="sc">+</span> backdoor <span class="sc">&gt;=</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">earn =</span> <span class="fu">runif</span>(<span class="dv">500</span>)<span class="sc">*</span><span class="dv">40</span><span class="sc">+</span><span class="dv">10</span><span class="sc">*</span>GATE<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span>backdoor<span class="sc">+</span>test<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>bandwidth <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>rdd <span class="ot">&lt;-</span> rdd.data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(<span class="dv">75</span><span class="sc">-</span>test) <span class="sc">&lt;</span> bandwidth) <span class="sc">%&gt;%</span></span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a>  <span class="co">#Create a variable indicating we&#39;re above the cutoff</span></span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">above =</span> test <span class="sc">&gt;=</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-8"><a href="#cb22-8" tabindex="-1"></a>  <span class="co">#And compare our outcome just below the cutoff to just above</span></span>
+<span id="cb22-9"><a href="#cb22-9" tabindex="-1"></a>  <span class="fu">group_by</span>(above) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">backdoor =</span> <span class="fu">mean</span>(backdoor))</span>
+<span id="cb22-10"><a href="#cb22-10" tabindex="-1"></a>rdd</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   above backdoor
+##   &lt;lgl&gt;    &lt;dbl&gt;
+## 1 FALSE     1.67
+## 2 TRUE      1.80</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co">#Not a lot of difference!</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>rdd<span class="sc">$</span>backdoor[<span class="dv">2</span>] <span class="sc">-</span> rdd<span class="sc">$</span>backdoor[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 0.125357</code></pre>
+</div>
+<div id="balance-2" class="slide section level2">
+<h1>Balance</h1>
+<ul>
+<li>Notice there’s NO real difference here, indicating that we’ve closed
+that back door</li>
+</ul>
+<p><img src="Session_8_IV_RDD_files/figure-slidy/unnamed-chunk-23-1.png" width="672" /></p>
+<pre><code>## $x
+## [1] &quot;Test Score&quot;
+## 
+## $y
+## [1] &quot;Backdoor Variable&quot;
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;labels&quot;</code></pre>
+</div>
+<div id="summing-up" class="slide section level2">
+<h1>Summing Up</h1>
+<ul>
+<li>We’ve covered five main methods of making comparisons as close as
+possible</li>
+<li><strong>Controlling and matching</strong> both take a set of
+measured variables and adjust so you’re looking at variation within
+those variables</li>
+<li><strong>Difference-in-difference</strong> takes a chosen comparison
+group and uses it to adjust for changes over time in your treated group
+of interest</li>
+<li><strong>Instrumental variables</strong> induce <em>good</em>
+variation in the endogenous variables</li>
+<li><strong>Regression discontinuity</strong> uses a cutoff in a running
+variable to identify a treated and nontreated group that are basically
+randomly assigned</li>
+</ul>
+</div>
+<div id="practice-1" class="slide section level2">
+<h1>Practice</h1>
+<ul>
+<li>Does winning help your party stay in power <em>30 years</em>
+later?</li>
+<li>Install and load the <code>politicaldata</code> package, and load
+<code>data(house_results)</code></li>
+<li>Create tibbles <code>hr76</code> and <code>hr16</code> with only
+1976 and 2016</li>
+<li>Create <code>repadv76</code> equal to <code>rep</code> vote minus
+<code>dem</code> for 1976, and filter only to those with
+<code>!is.na(repadv75)</code></li>
+<li>Create <code>repwins16</code> equal to <code>rep &gt; dem</code> for
+2016, and filter <code>!is.na(repwins16)</code></li>
+<li><code>select()</code> only
+<code>district</code>,<code>repadv76</code>, <code>repwins16</code>, and
+<code>inner_join()</code> the two data sets</li>
+<li>Compare <code>repwins16</code> mean above and below
+<code>repadv76=0</code> with a bandwidth of .04</li>
+</ul>
+</div>
+<div id="practice-answers-1" class="slide section level2">
+<h1>Practice Answers</h1>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># install the remotes package if it&#39;s not already</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;remotes&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>}</span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="co"># install dev version of politicaldata from github</span></span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;elliottmorris/politicaldata&quot;</span>)</span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a><span class="co"># load the politicaldata package</span></span>
+<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a><span class="fu">library</span>(politicaldata)</span>
+<span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a><span class="fu">data</span>(house_results)</span>
+<span id="cb27-13"><a href="#cb27-13" tabindex="-1"></a></span>
+<span id="cb27-14"><a href="#cb27-14" tabindex="-1"></a>hr76 <span class="ot">&lt;-</span> <span class="fu">filter</span>(house_results,year<span class="sc">==</span><span class="dv">1976</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-15"><a href="#cb27-15" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">repadv76 =</span> rep <span class="sc">-</span> dem) <span class="sc">%&gt;%</span></span>
+<span id="cb27-16"><a href="#cb27-16" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(repadv76)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-17"><a href="#cb27-17" tabindex="-1"></a>  <span class="fu">select</span>(district,repadv76)</span>
+<span id="cb27-18"><a href="#cb27-18" tabindex="-1"></a></span>
+<span id="cb27-19"><a href="#cb27-19" tabindex="-1"></a>hr16 <span class="ot">&lt;-</span> <span class="fu">filter</span>(house_results,year<span class="sc">==</span><span class="dv">2016</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-20"><a href="#cb27-20" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">repwins16 =</span> rep <span class="sc">&gt;</span> dem) <span class="sc">%&gt;%</span></span>
+<span id="cb27-21"><a href="#cb27-21" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(repwins16)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-22"><a href="#cb27-22" tabindex="-1"></a>  <span class="fu">select</span>(district,repwins16)</span>
+<span id="cb27-23"><a href="#cb27-23" tabindex="-1"></a></span>
+<span id="cb27-24"><a href="#cb27-24" tabindex="-1"></a>fulldata <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(hr76,hr16)</span>
+<span id="cb27-25"><a href="#cb27-25" tabindex="-1"></a>bandwidth <span class="ot">&lt;-</span> .<span class="dv">04</span> </span>
+<span id="cb27-26"><a href="#cb27-26" tabindex="-1"></a></span>
+<span id="cb27-27"><a href="#cb27-27" tabindex="-1"></a>fulldata <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(repadv76<span class="dv">-0</span>)<span class="sc">&lt;=</span>.<span class="dv">04</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-28"><a href="#cb27-28" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">above =</span> repadv76 <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-29"><a href="#cb27-29" tabindex="-1"></a>  <span class="fu">group_by</span>(above) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">repwins16=</span><span class="fu">mean</span>(repwins16))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   above repwins16
+##   &lt;lgl&gt;     &lt;dbl&gt;
+## 1 FALSE     0.737
+## 2 TRUE      0.889</code></pre>
+</div>
+<div class="footer">
+  <div class="footer-left">
+    <img src="logo.jpg" class="footer-logo-image">
+  </div>
+  <div class="footer-center">
+   Andreas Steinmayr
+  </div>
+  <div class="footer-right">
+    <span class="course-number">404050 Impact Evaluation </span>
+  </div>
+</div>
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+</body>
+</html>
