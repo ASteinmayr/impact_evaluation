@@ -1,0 +1,181 @@
+---
+output:
+  slidy_presentation:
+    self_contained: no
+    css: template.css
+    includes:
+      after_body: footer.html
+  beamer_presentation: default
+---
+
+## 
+
+<div class="header-container first-slide-header">
+  <img src="logo.jpg" class="logo" alt="University Logo">
+  <img src="uibk_header1.png" class="header-image" alt="University Header">
+  <h1>Guidelines for Empirical Project</h1> 
+</div>
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(purrr)
+library(patchwork)
+library(ggpubr)
+library(dagitty)
+library(ggdag)
+library(gganimate)
+library(ggthemes)
+library(Cairo)
+library(modelsummary)
+library(wooldridge)
+library(fixest)
+
+knitr::opts_chunk$set(fig.width = 5, fig.height = 3)
+
+theme_set(
+  theme_minimal(base_size = 10) +   # Adjust base font size
+  theme(
+    plot.title = element_text(size = 10, face = "bold"),  # Title font size and boldness
+    axis.text = element_text(size = 8),                  # Axis text size
+    axis.title = element_text(size = 10),                # Axis label size
+    legend.title = element_text(size = 8),               # Legend title font size
+    legend.text = element_text(size = 7)                 # Legend item font size
+  )
+)
+```
+
+---
+
+# Now it is your turn: Conduct your own project
+
+- Students should design and implement their own empirical project.
+- This includes all the steps we discuss in the lecture:
+  - Develop a research question.
+  - Develop a theory of change and a results chain.
+  - Develop a causal diagram depicting the situation
+  - Use one of the discussed strategies to identify the causal effect you are interested in.
+  - Estimate the effects using Stata or R.
+  - Present results in seminar and written paper.
+
+---
+
+# If you are totally overwhelmed...
+
+- You can submit only the research design.
+- You design a research project in the same way but you don't actually implement it.
+- You do all steps outlined before except "Estimate the effects using Stata or R."
+- **However: ** You can reach at most 70% of the maximum points reachable on the project! 
+
+---
+
+# Some Examples from Previous Years
+
+- **Effect of vaccine-skeptic phyisicians ond vaccinations rates**
+  - Control strategy (closing backdoors)
+- **Effect of speed limit on highway accidents**
+  - RDD using speed limits.
+- **Effect of child care facilities on labor force participation of parents**
+  - Difference-in-Differences using policy reforms in individual states
+  
+---
+
+# Some Guidelines
+
+- Work together in groups of two or three.
+- You are free to choose and develop your own research project.
+- You are free to use any data you want. I provide the SUF of the *Austrian Microcensus*. 
+- Another source of Austrian data is *AUSSDA* https://aussda.at/ 
+- For various datasets from all over the world look at https://tinyurl.com/2s4km8p3 
+- If you don’t have specific data in mind, I encourage you to use the Microcensus.
+- Start thinking about potential research questions and research designs right away. Make notes about your ideas and discuss them with your colleagues.
+
+---
+
+# Initial Idea Submission
+
+For your ideas, write down:
+
+- Research question.
+- Mechanisms / theory of change you have in mind.
+- Setting and empirical strategy.
+- Which data source you could use. Does it contain the necessary variables? Does it have a *sufficient* number of observations?
+
+This should not be more than half a page. Send me a first email with your ideas no later than **December 11th**. Ideally, send individual ideas earlier.
+
+---
+
+# Feedback and Meetings
+
+- I will provide feedback so you can select an idea for your project.
+- We will have short virtual meetings during the week of **December 16th**.
+- By **December 20th**, every group should have settled on a project with a clear strategy and start working on the implementation.
+- We will have another short (virtual) meeting in the week of **January 6th**
+- On the seminar day (**January 31st**), every group will present their project (50 minutes per project).
+- Hand in the written project report no later than **February 5th**.
+
+---
+
+# Useful material and support
+
+- Our book "The Effect" provides many practical examples and suggestions
+- Look at research papers and how it's done there
+- You can use ChatGPT (or other LLMs) if you are stuck in the coding process
+  - **ALWAYS CHECK CODE THAT IS PRODUCED BY CHATGPT**
+  - **DON'T USE CHATGPT TO PRODUCE CONTENT**
+- Reach out to Elias Balayan if you are totally stuck.
+
+---
+
+# Presentation Content
+
+Your presentation should cover the following points:
+
+- Introduce your research question. Why is it interesting?
+- The context in which you are trying to answer this question.
+- The causal graph
+- The method chosen to answer the questions.
+- The data (variables, sample size) used.
+- What the assumptions of the method mean in your context. Are these assumptions likely fulfilled?
+  - Discuss using the causal graph
+- Your findings.
+
+---
+
+# Research Report Structure
+
+- The structure of the report can follow the structure of the presentation:
+  - Introduction and research questions
+  - Context
+  - Causal graph
+  - Data
+  - Methods and discussion of assumptions
+  - Results
+  - Conclusion
+- Length: 10-15 pages of text
+- Provide sufficient information for replication of your analysis.
+
+---
+
+# Further Remarks
+
+- Empirical research is hard. Most likely, not all assumptions required by the methods will be fulfilled in your setting.
+- It's okay if some assumptions are violated. Discuss their implications.
+- Finding no effect can be as interesting as finding a significant effect.
+- Use the empirical papers discussed in class as a guide.
+
+---
+
+# Formal Guidelines for the Report
+
+- Consider using LaTeX instead of MS Word for writing your report.
+- You find a LaTeX template you can use on OLAT.
+
+---
+
+## Additional Material on OLAT
+
+- LaTeX template.
+- Austrian Microcensus scientific use files.
